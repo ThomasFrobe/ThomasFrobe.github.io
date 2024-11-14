@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Style.css">
+    <title>Cart Page</title>
+
+    <style>
+        .cartContent {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .cartItem {
+            display: flex;
+            flex-direction: row;
+            border: 1px solid wheat;
+            border-radius: 15px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Your Cart</h1>
+    <div class="cartContent" id="cartContent"></div>
+
+    <script>
+        // Retrieve cart items from localStorage
+        const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+
+        // Display each product in the cart
+        const cartContent = document.getElementById("cartContent");
+        if (cartItems.length > 0) {
+            cartItems.forEach(item => {
+                cartContent.innerHTML += `
+                    <div class="cartItem">
+                        <h2>${item.name}</h2>
+                        <p>${item.description}</p>
+                        <p>Quantity: ${item.quantity}</p>
+                    </div>
+                `;
+            });
+        } else {
+            cartContent.innerHTML = "<p>Your cart is empty.</p>";
+        }
+    </script>
+</body>
+</html>
