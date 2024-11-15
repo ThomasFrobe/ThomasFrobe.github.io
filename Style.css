@@ -5,3 +5,19 @@ body {
 a {
     color: wheat;
 }
+
+.nav {
+    display: flex;
+    flex-direction: row;
+    background-color: rgba(0, 0, 0, 0.247);
+    border: 1px solid black;
+    justify-content: end;
+}
+
+.nav > a {
+    background-color: rgba(0, 0, 0, 0.247);
+    border: 1px solid black;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-decoration: none;
+}

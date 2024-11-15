@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Style.css">
-    <title>Cart Page</title>
+    <title>Shop Custom SWU Supplies</title>
 
     <style>
         .cartContent {
@@ -37,7 +37,7 @@
             display: block;
         }
 
-        @media (max-width: 600px) {
+        @media (max-width: 450px) {
             .cartContent .productDetails p {
                 display: none;
             }
@@ -45,6 +45,13 @@
 
         .cartItem .quantityControls {
             display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .cartItem .quantityControls > {
+            display: flex;
+            flex-direction: row;
             align-items: center;
         }
 
@@ -86,87 +93,116 @@
             width: 95%
         }
 
+        .checkoutForm > div {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            margin: 5px;
+        }
+
+        .checkoutForm > div > input {
+            border: none;
+            border-bottom: 1px solid black;
+        }
+
         .informationForm a {
             color: blue;
         }
     </style>
 </head>
+
 <body>
+    <ul class="nav">
+        <a href="index.html">Home</a>
+        <a href="ShoppingForm.html">Products For Purchase</a>
+    </ul>
+
     <h1>Your Cart</h1>
     <div class="cartContent" id="cartContent"></div>
 
     <div class="informationForm">
         <h1>Checkout</h1>
-
-        <form id="checkoutForm" >
+    
+        <form id="checkoutForm" class="checkoutForm">
             <!-- Personal Information -->
             <div>
-                <label for="fullName">Full Name</label>
+                <label for="fullName"><b>Full Name</b></label>
                 <input type="text" id="fullName" name="fullName" required placeholder="John Doe">
-
-                <label for="email">Email Address</label>
+            </div>
+    
+            <div>
+                <label for="email"><b>Email Address</b></label>
                 <input type="email" id="email" name="email" required placeholder="john@example.com">
-                
-                <label for="phone">Phone Number</label>
+            </div>
+            
+            <div>
+                <label for="phone"><b>Phone Number</b></label>
                 <input type="tel" id="phone" name="phone" required placeholder="(123) 456-7890">
             </div>
-
+    
             <!-- Delivery Address -->
             <div>
-                <label for="addressLine1">Address Line 1</label>
+                <label for="addressLine1"><b>Address Line 1</b></label>
                 <input type="text" id="addressLine1" name="addressLine1" required placeholder="123 Main St">
-
-                <label for="addressLine2">Address Line 2 (optional)</label>
-                <input type="text" id="addressLine2" name="addressLine2" placeholder="Apt. 4B">
-
-                <div class="address-group">
-                    <div>
-                        <label for="city">City</label>
-                        <input type="text" id="city" name="city" required placeholder="City">
-                        <label for="state">State/Province</label>
-                        <input type="text" id="state" name="state" required placeholder="State/Province">
-                        <label for="postalCode">Postal Code</label>
-                        <input type="text" id="postalCode" name="postalCode" required placeholder="12345">
-                    </div>
-                </div>
-                <div class="address-group">
-                    <div>
-                        <label for="country">Country</label>
-                        <select id="country" name="country" required>
-                            <option value="US">United States</option>
-                            <option value="CA">Canada</option>
-                            <option value="GB">United Kingdom</option>
-                            <option value="AU">Australia</option>
-                            <option value="IN">India</option>
-                            <!-- Add more countries as needed -->
-                        </select>
-                    </div>
-                </div>
             </div>
-
+            
+            <div>
+                <label for="addressLine2">Address Line 2</label>
+                <input type="text" id="addressLine2" name="addressLine2" placeholder="Apt. 4B">
+            </div>
+    
+            <div>
+                <label for="city"><b>City</b></label>
+                <input type="text" id="city" name="city" required placeholder="City">
+            </div>
+    
+            <div>
+                <label for="state"><b>State/Province</b></label>
+                <input type="text" id="state" name="state" required placeholder="State/Province">
+            </div>
+    
+            <div>
+                <label for="postalCode"><b>Postal Code</b></label>
+                <input type="text" id="postalCode" name="postalCode" required placeholder="12345">
+            </div>
+    
+            <div>
+                <label for="country"><b>Country</b></label>
+                <select id="country" name="country" required>
+                    <option value="US">United States</option>
+                    <option value="CA">Canada</option>
+                </select>
+            </div>
+    
             <!-- Card Details -->
             <div>
-                <label for="cardNumber">Card Number</label>
+                <label for="cardNumber"><b>Card Number</b></label>
                 <input type="number" id="cardNumber" name="cardNumber" required placeholder="1234 5678 9101 1121">
-
-                <div class="card-details-group">
-                    <div>
-                        <label for="expiryDate">Expiry Date</label>
-                        <input type="month" id="expiryDate" name="expiryDate" required>
-                    </div>
-                    <div>
-                        <label for="cvv">CVV</label>
-                        <input type="number" id="cvv" name="cvv" required placeholder="123">
-                    </div>
-                </div>
             </div>
-            <input type="checkbox" id="agreement" name="agreement" required><label for="agreement">Click to agree to our <a href="#">terms and conditions</a>.</label><br>
-            <input type="checkbox" id="saveInfo" name="saveInfo"><label for="saveInfo">Save my information for next time</label>
-            <!-- Submit Button --><br>
-            <button type="submit" class="submit-btn" id="submitBtn">Submit Payment</button>
+    
+            <div>
+                <label for="expiryDate"><b>Expiry Date</b></label>
+                <input type="month" id="expiryDate" name="expiryDate" required>
+            </div>
+    
+            <div>
+                <label for="cvv"><b>CVV</b></label>
+                <input type="number" id="cvv" name="cvv" required placeholder="123">
+            </div>
+
+            <br><input type="checkbox" id="agreement" name="agreement" required>
+            <label for="agreement">Click to agree to our <a href="#">terms and conditions</a>.</label>
+
+            <br><input type="checkbox" id="saveInfo" name="saveInfo">
+            <label for="saveInfo">Save my information for next time</label>
+
+            <!-- Submit Button -->
+            <div style="justify-content: end;">
+                <br><button type="submit" class="submit-btn" id="submitBtn">Submit Payment</button>
+            </div>
         </form>
     </div>
-
+    
     <script>
         // Get saved cart items from localStorage
         function getCartItems() {
@@ -307,12 +343,14 @@
                             <p>${item.description}</p>
                         </div>
                         <div class="quantityControls">
-                            <button onclick="decrement(${index})">-</button>
-                            <input type="number" class="quantityInput" id="quantity-${index}" value="${item.quantity}" min="0">
-                            <button onclick="increment(${index})">+</button>
-                        </div>
-                        <div class="productPrice">
-                            $${parseFloat(item.price.replace('$', '')).toFixed(2)} x ${item.quantity} = $${(parseFloat(item.price.replace('$', '')) * item.quantity).toFixed(2)}
+                            <span class="productPrice">
+                                $${parseFloat(item.price.replace('$', '')).toFixed(2)} x ${item.quantity} = $${(parseFloat(item.price.replace('$', '')) * item.quantity).toFixed(2)}
+                            </span>
+                            <div>
+                                <button onclick="decrement(${index})">-</button>
+                                <input type="number" class="quantityInput" id="quantity-${index}" value="${item.quantity}" min="0">
+                                <button onclick="increment(${index})">+</button>
+                            </div>
                         </div>
                     `;
                     cartContent.appendChild(cartItemDiv);
@@ -326,6 +364,7 @@
             loadSavedUserData();
             loadCartItems();
             checkFormCompletion();
+            alert("Note: This shopping cart is for demonstration purposes only. Your information will not go anywhere.")
             document.getElementById('checkoutForm').addEventListener('submit', handleFormSubmit);
             document.getElementById('saveInfo').addEventListener('change', saveUserData);
             document.querySelectorAll("#checkoutForm input, #checkoutForm select").forEach((input) => {

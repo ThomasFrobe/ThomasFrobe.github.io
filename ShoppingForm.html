@@ -4,17 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Style.css">
-    <title>Product Row Layout</title>
+    <title>Shop SWU Supplies</title>
     <style>
-        /* Basic styling (no changes here) */
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            padding: 20px;
-            background-color: rgba(0, 0, 0, 0.884);
-        }
-
         .productContainer {
             display: flex;
             flex-direction: column;
@@ -74,6 +65,16 @@
         .quantityControls {
             display: flex;
             align-items: center;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-self: flex-start;
+        }
+
+        .quantityControls > div {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            align-content: center;
         }
 
         .quantityControls button {
@@ -101,6 +102,13 @@
         }
         /* Responsive grid layout for smaller screens */
         @media (max-width: 600px) {
+            .productContainer {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
             .productRow {
                 display: grid;
                 grid-template-columns: auto 1fr auto;
@@ -118,7 +126,7 @@
                         "details"
                         "controls";
                     justify-items: center;
-                    max-width: 250px;
+                    max-width: 225px;
                 }
             }
 
@@ -138,6 +146,10 @@
                 grid-area: controls;
                 justify-self: center;
                 justify-items: center;
+
+                display: flex;
+                flex-direction: row;
+                align-self: center;
             }
         }
 
@@ -158,7 +170,12 @@
         }
     </style>
 </head>
+
 <body>
+    <ul class="nav">
+        <a href="index.html">Home</a>
+        <a href="ShoppingForm.html">Products For Purchase</a>
+    </ul>
 
     <div class="productContainer">
         <!-- Product 1 -->
@@ -172,14 +189,16 @@
             <div class="productDetails">
                 <h2 class="productName">Product 1</h2>
                 <p class="productDescription">Description for Product 1.</p>
-                <p class="productPrice">$19.99</p> <!-- Price added here -->
             </div>
     
             <!-- Quantity Controls -->
             <div class="quantityControls">
-                <button onclick="decrement(1)">-</button>
-                <input type="number" class="quantityInput" id="quantity-1" value="0" min="0">
-                <button onclick="increment(1)">+</button>
+                <p class="productPrice">$19.99</p>
+                <div>
+                    <button onclick="decrement(1)">-</button>
+                    <input type="number" class="quantityInput" id="quantity-1" value="0" min="0">
+                    <button onclick="increment(1)">+</button>
+                </div>
             </div>
         </div>
     
@@ -194,14 +213,16 @@
             <div class="productDetails">
                 <h2 class="productName">Product 2</h2>
                 <p class="productDescription">Description for Product 2.</p>
-                <p class="productPrice">$29.99</p> <!-- Price added here -->
             </div>
     
             <!-- Quantity Controls -->
             <div class="quantityControls">
-                <button onclick="decrement(2)">-</button>
-                <input type="number" class="quantityInput" id="quantity-2" value="0" min="0">
-                <button onclick="increment(2)">+</button>
+                <p class="productPrice">$29.99</p>
+                <div>
+                    <button onclick="decrement(2)">-</button>
+                    <input type="number" class="quantityInput" id="quantity-2" value="0" min="0">
+                    <button onclick="increment(2)">+</button>
+                </div>
             </div>
         </div>
     </div>
