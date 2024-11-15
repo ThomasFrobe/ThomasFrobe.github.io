@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Style.css">
+    <link rel="icon" type="image/x-icon" href="Aspects\SWU Aspects.png">
     <title>Shop SWU Supplies</title>
     <style>
         .productContainer {
@@ -173,8 +174,11 @@
 
 <body>
     <ul class="nav">
-        <a href="index.html">Home</a>
-        <a href="ShoppingForm.html">Products For Purchase</a>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="HowToPlay.html">How to Play</a></li>
+        <li><a href="Aspects.html">The Aspects</a></li>
+        <li><a href="DeckBuilding.html">DeckBuilding</a></li>
+        <li><a href="ShoppingForm.html">Products For Sale</a></li>
     </ul>
 
     <div class="productContainer">
@@ -233,6 +237,10 @@
     </div>
 
     <script>
+        window.onload = function() {
+            alert("Note: These products are not for sale. This page is for demonstration purposes only. Any information inputted on the next page will not actually be stored or otherwised used to charge your card.")
+        }
+
         // Increment and decrement functions take product ID as an argument
         function increment(productId) {
             let quantityInput = document.getElementById(`quantity-${productId}`);

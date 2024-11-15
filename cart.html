@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Style.css">
+    <link rel="icon" type="image/x-icon" href="Aspects\SWU Aspects.png">
     <title>Shop Custom SWU Supplies</title>
 
     <style>
@@ -113,8 +114,11 @@
 
 <body>
     <ul class="nav">
-        <a href="index.html">Home</a>
-        <a href="ShoppingForm.html">Products For Purchase</a>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="HowToPlay.html">How to Play</a></li>
+        <li><a href="Aspects.html">The Aspects</a></li>
+        <li><a href="DeckBuilding.html">DeckBuilding</a></li>
+        <li><a href="ShoppingForm.html">Products For Sale</a></li>
     </ul>
 
     <h1>Your Cart</h1>
@@ -364,7 +368,7 @@
             loadSavedUserData();
             loadCartItems();
             checkFormCompletion();
-            alert("Note: This shopping cart is for demonstration purposes only. Your information will not go anywhere.")
+            //alert("Note: This shopping cart is for demonstration purposes only. Your information will not go anywhere.")
             document.getElementById('checkoutForm').addEventListener('submit', handleFormSubmit);
             document.getElementById('saveInfo').addEventListener('change', saveUserData);
             document.querySelectorAll("#checkoutForm input, #checkoutForm select").forEach((input) => {

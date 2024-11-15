@@ -14,7 +14,13 @@ a {
     justify-content: end;
 }
 
-.nav > a {
+.nav > li {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav > li > a {
     background-color: rgba(0, 0, 0, 0.247);
     border: 1px solid black;
     padding-left: 10px;
