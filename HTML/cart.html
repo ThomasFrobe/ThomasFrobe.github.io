@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Style.css">
+    <link rel="icon" type="image/x-icon" href="Aspects\SWU Aspects.png">
+    <title>Shop Custom SWU Supplies</title>
+
+    <style>
+        .cartContent {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin: 10px;
+        }
+
+        .cartItem {
+            display: flex;
+            flex-direction: row;
+            border: 1px solid wheat;
+            border-radius: 15px;
+            padding: 15px;
+        }
+
+        .cartItem .productImage img {
+            width: 100px;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .cartItem .productDetails {
+            margin-left: 15px;
+            flex-grow: 1;
+        }
+
+        .cartItem .productDetails p {
+            display: block;
+        }
+
+        @media (max-width: 450px) {
+            .cartContent .productDetails p {
+                display: none;
+            }
+        }
+
+        .cartItem .quantityControls {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .cartItem .quantityControls > {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        .cartItem button {
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .cartItem button:hover {
+            background-color: #219150;
+        }
+
+        .cartItem input[type="number"] {
+            width: 50px;
+            text-align: center;
+            padding: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        .cartItem .productPrice {
+            font-size: 1.2em;
+            color: #f39c12;
+            font-weight: bold;
+            margin-left: 20px;
+        }
+
+        .informationForm {
+            background-color: white;
+            color:black;
+            border: 30px wheat;
+            border-radius: 15px;
+            padding: 15px;
+            width: 95%
+        }
+
+        .checkoutForm > div {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            margin: 5px;
+        }
+
+        .checkoutForm > div > input {
+            border: none;
+            border-bottom: 1px solid black;
+        }
+
+        .informationForm a {
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="nav">
+        <a href="index.html">Home</a>
+        <div class="dropdown">
+            <button class="dropbtn">How to Play<i class="carrotDown"></i></button>
+            <div class="dropdownContent">
+                <a href="HowToPlay.html">Basics</a>
+                <a href="keywords.html">Abilities</a>
+                <a href="Aspects.html">The Aspects</a>
+                <a href="DeckBuilding.html">DeckBuilding</a>
+                <a href="WhyILike.html">Why I Like SWU</a>
+                <a href="UsefulResources.html">Useful Resources</a>
+            </div>
+        </div>
+        <a href="AboutMe.html">About The Author</a>
+        <a href="resource.html">Citations</a>
+        <a href="ShoppingForm.html">Products For Sale</a>
+    </div>
+    
+    <h1>Your Cart</h1>
+    <div class="cartContent" id="cartContent"></div>
+
+    <div class="informationForm">
+        <h1>Checkout</h1>
+    
+        <form id="checkoutForm" class="checkoutForm">
+            <!-- Personal Information -->
+            <div>
+                <label for="fullName"><b>Full Name</b></label>
+                <input type="text" id="fullName" name="fullName" required placeholder="John Doe">
+            </div>
+    
+            <div>
+                <label for="email"><b>Email Address</b></label>
+                <input type="email" id="email" name="email" required placeholder="john@example.com">
+            </div>
+            
+            <div>
+                <label for="phone"><b>Phone Number</b></label>
+                <input type="tel" id="phone" name="phone" required placeholder="(123) 456-7890">
+            </div>
+    
+            <!-- Delivery Address -->
+            <div>
+                <label for="addressLine1"><b>Address Line 1</b></label>
+                <input type="text" id="addressLine1" name="addressLine1" required placeholder="123 Main St">
+            </div>
+            
+            <div>
+                <label for="addressLine2">Address Line 2</label>
+                <input type="text" id="addressLine2" name="addressLine2" placeholder="Apt. 4B">
+            </div>
+    
+            <div>
+                <label for="city"><b>City</b></label>
+                <input type="text" id="city" name="city" required placeholder="City">
+            </div>
+    
+            <div>
+                <label for="state"><b>State/Province</b></label>
+                <input type="text" id="state" name="state" required placeholder="State/Province">
+            </div>
+    
+            <div>
+                <label for="postalCode"><b>Postal Code</b></label>
+                <input type="text" id="postalCode" name="postalCode" required placeholder="12345">
+            </div>
+    
+            <div>
+                <label for="country"><b>Country</b></label>
+                <select id="country" name="country" required>
+                    <option value="US">United States</option>
+                    <option value="CA">Canada</option>
+                </select>
+            </div>
+    
+            <!-- Card Details -->
+            <div>
+                <label for="cardNumber"><b>Card Number</b></label>
+                <input type="number" id="cardNumber" name="cardNumber" required placeholder="1234 5678 9101 1121">
+            </div>
+    
+            <div>
+                <label for="expiryDate"><b>Expiry Date</b></label>
+                <input type="month" id="expiryDate" name="expiryDate" required>
+            </div>
+    
+            <div>
+                <label for="cvv"><b>CVV</b></label>
+                <input type="number" id="cvv" name="cvv" required placeholder="123">
+            </div>
+
+            <p><b>Price:</b> 0.00</p>
+
+            <div>
+                <label for="shipping"><b>Shipping</b></label>
+                <input type="radio" required>
+            </div>
+
+            <br><input type="checkbox" id="agreement" name="agreement" required>
+            <label for="agreement">Click to agree to our <a href="#">terms and conditions</a>.</label>
+
+            <br><input type="checkbox" id="saveInfo" name="saveInfo">
+            <label for="saveInfo">Save my information for next time</label>
+
+            <!-- Submit Button -->
+            <div style="justify-content: end;">
+                <br><button type="submit" class="submit-btn" id="submitBtn">Submit Payment</button>
+            </div>
+        </form>
+    </div>
+    
+    <script>
+        // Get saved cart items from localStorage
+        function getCartItems() {
+            return JSON.parse(localStorage.getItem('cartItems')) || [];
+        }
+
+        // Helper function to get a form field value
+        function getFormFieldValue(id) {
+            return document.getElementById(id).value;
+        }
+    
+        // Save data to localStorage when "Save Info" checkbox is checked
+        function saveUserData() {
+            if (document.getElementById('saveInfo').checked) {
+                const formData = {
+                    fullName: getFormFieldValue('fullName'),
+                    email: getFormFieldValue('email'),
+                    phone: getFormFieldValue('phone'),
+                    addressLine1: getFormFieldValue('addressLine1'),
+                    addressLine2: getFormFieldValue('addressLine2'),
+                    city: getFormFieldValue('city'),
+                    state: getFormFieldValue('state'),
+                    postalCode: getFormFieldValue('postalCode'),
+                    country: getFormFieldValue('country'),
+                    cardNumber: getFormFieldValue('cardNumber'),
+                    expiryDate: getFormFieldValue('expiryDate'),
+                    cvv: getFormFieldValue('cvv')
+                };
+                localStorage.setItem('savedInfo', JSON.stringify(formData));
+            } else {
+                localStorage.removeItem('savedInfo');
+            }
+        }
+    
+        // Load saved data from localStorage and prefill the form if available
+        function loadSavedUserData() {
+            const savedInfo = JSON.parse(localStorage.getItem('savedInfo'));
+            if (savedInfo) {
+                document.getElementById('fullName').value = savedInfo.fullName;
+                document.getElementById('email').value = savedInfo.email;
+                document.getElementById('phone').value = savedInfo.phone;
+                document.getElementById('addressLine1').value = savedInfo.addressLine1;
+                document.getElementById('addressLine2').value = savedInfo.addressLine2 || '';
+                document.getElementById('city').value = savedInfo.city;
+                document.getElementById('state').value = savedInfo.state;
+                document.getElementById('postalCode').value = savedInfo.postalCode;
+                document.getElementById('country').value = savedInfo.country;
+                document.getElementById('cardNumber').value = savedInfo.cardNumber;
+                document.getElementById('expiryDate').value = savedInfo.expiryDate;
+                document.getElementById('cvv').value = savedInfo.cvv;
+                document.getElementById('saveInfo').checked = true;
+            }
+        }
+    
+        // Form submission handler
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const data = {};
+            formData.forEach((value, key) => {
+                data[key] = value;
+            });
+            console.log(data);  // Here you'd send the data to your server
+            alert("Payment submitted successfully!");
+            window.location.href = "ShoppingForm.html";
+        }
+
+        // Check if all required fields are filled and enable/disable the submit button
+        function checkFormCompletion() {
+            const requiredInputs = document.querySelectorAll("#checkoutForm input[required], #checkoutForm select[required]");
+            const submitBtn = document.getElementById("submitBtn");
+
+            let allFilled = true;
+            requiredInputs.forEach((input) => {
+                if (!input.value.trim()) {
+                    allFilled = false;
+                }
+            });
+
+            submitBtn.disabled = !allFilled;
+        }
+
+        // Cart item manipulation functions
+        function updateCartItemPrice(index, newQuantity) {
+            const cartItems = getCartItems();
+            const priceElement = document.querySelector(`#cartContent .cartItem[data-product-id="${index}"] .productPrice`);
+            const price = parseFloat(cartItems[index].price.replace('$', ''));
+            priceElement.innerHTML = `$${price.toFixed(2)} x ${newQuantity} = $${(price * newQuantity).toFixed(2)}`;
+        }
+
+        function increment(index) {
+            const cartItems = getCartItems();
+            const quantityInput = document.getElementById(`quantity-${index}`);
+            const newQuantity = parseInt(quantityInput.value) + 1;
+            quantityInput.value = newQuantity;
+            cartItems[index].quantity = newQuantity;
+            localStorage.setItem('cartItems', JSON.stringify(cartItems));
+            updateCartItemPrice(index, newQuantity);
+        }
+    
+        function decrement(index) {
+            const cartItems = getCartItems();
+            const quantityInput = document.getElementById(`quantity-${index}`);
+            let newQuantity = parseInt(quantityInput.value) - 1;
+            if (newQuantity >= 0) {
+                quantityInput.value = newQuantity;
+                cartItems[index].quantity = newQuantity;
+                localStorage.setItem('cartItems', JSON.stringify(cartItems));
+                updateCartItemPrice(index, newQuantity);
+    
+                if (newQuantity === 0) {
+                    cartItems.splice(index, 1);
+                    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+                    document.querySelector(`#cartContent .cartItem[data-product-id="${index}"]`).remove();
+    
+                    if (cartItems.length === 0) {
+                        document.getElementById('cartContent').innerHTML = "<p>Your cart is empty.</p>";
+                    }
+                }
+            }
+        }
+    
+        // Load the cart items from localStorage and render them
+        function loadCartItems() {
+            const cartItems = getCartItems();
+            const cartContent = document.getElementById("cartContent");
+    
+            if (cartItems.length > 0) {
+                cartItems.forEach((item, index) => {
+                    const cartItemDiv = document.createElement('div');
+                    cartItemDiv.classList.add('cartItem');
+                    cartItemDiv.setAttribute('data-product-id', item.id);
+    
+                    cartItemDiv.innerHTML = `
+                        <div class="productImage">${item.image}</div>
+                        <div class="productDetails">
+                            <h2>${item.name}</h2>
+                            <p>${item.description}</p>
+                        </div>
+                        <div class="quantityControls">
+                            <span class="productPrice">
+                                $${parseFloat(item.price.replace('$', '')).toFixed(2)} x ${item.quantity} = $${(parseFloat(item.price.replace('$', '')) * item.quantity).toFixed(2)}
+                            </span>
+                            <div>
+                                <button onclick="decrement(${index})">-</button>
+                                <input type="number" class="quantityInput" id="quantity-${index}" value="${item.quantity}" min="0">
+                                <button onclick="increment(${index})">+</button>
+                            </div>
+                        </div>
+                    `;
+                    cartContent.appendChild(cartItemDiv);
+                });
+            } else {
+                cartContent.innerHTML = "<p>Your cart is empty.</p>";
+            }
+        }
+    
+        window.onload = function() {
+            loadSavedUserData();
+            loadCartItems();
+            checkFormCompletion();
+            //alert("Note: This shopping cart is for demonstration purposes only. Your information will not go anywhere.")
+            document.getElementById('checkoutForm').addEventListener('submit', handleFormSubmit);
+            document.getElementById('saveInfo').addEventListener('change', saveUserData);
+            document.querySelectorAll("#checkoutForm input, #checkoutForm select").forEach((input) => {
+                input.addEventListener("input", checkFormCompletion);
+            });
+        };
+    </script>
+</body>
+</html>

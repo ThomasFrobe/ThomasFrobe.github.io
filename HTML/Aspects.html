@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>SWU Fan Site</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Style.css">
+    <link rel="icon" type="image/x-icon" href="Aspects\SWU Aspects.png">
+    <style>
+        .mainContent {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .ButtonGroup {
+            display: inline-flex;
+            align-self: center;
+        }
+
+        .toggle-button {
+            padding: 10px 20px;
+            background-color: #ffffff;
+            border: 1px solid #ccc;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .toggle-button.active {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .toggle-button:hover {
+            background-color: #e0e0e0;
+        }
+
+        .content-section-left {
+            position: relative; /* Make it a positioning context for the image and text */
+            height: 400px; /* Set the height of the container */
+            overflow: hidden; /* Ensures the image doesn't overflow outside the container */
+            padding: 20px;
+            color: white; /* Make the text white for better contrast on the image */
+            text-shadow: 0px 0px 7px black;
+            display: none;
+        }
+        .content-section-left.active {
+            display: block;
+        }
+
+        .leftImage {
+            position: absolute; /* Take it out of the normal flow */
+            top: 0; /* Align the image to the top of the container */
+            left: -230px; /* Align the image to the left of the container */
+            width: auto; /* Set image width to 50% of the container's width */
+            height: 100%; /* Maintain aspect ratio */
+            z-index: -1; /* Ensure image stays behind the text */
+            opacity: 50%;
+        }
+
+        .content-section-left h2, 
+        .content-section-left p {
+            position: relative; /* Ensures text stays above the image */
+            z-index: 1; /* Make sure text appears above the image */
+            margin: 5px;
+        }
+
+        .content-section-left h2 {
+            font-size: 54px;
+        }
+
+        .content-section-right {
+            position: relative; /* Make it a positioning context for the image and text */
+            height: 400px; /* Set the height of the container */
+            overflow: hidden; /* Ensures the image doesn't overflow outside the container */
+            padding: 20px;
+            color: white; /* Make the text white for better contrast on the image */
+            text-shadow: 0px 0px 7px black;
+            text-align: right;
+            display: none;
+        }
+        .content-section-right.active {
+            display: block;
+        }
+
+        .rightImage {
+            position: absolute; /* Take it out of the normal flow */
+            top: 0; /* Align the image to the top of the container */
+            right: -230px; /* Align the image to the left of the container */
+            width: auto; /* Set image width to 50% of the container's width */
+            height: 100%; /* Maintain aspect ratio */
+            z-index: -1; /* Ensure image stays behind the text */
+            opacity: 50%;
+        }
+
+        .content-section-right h2, 
+        .content-section-right p {
+            position: relative; /* Ensures text stays above the image */
+            z-index: 1; /* Make sure text appears above the image */
+            margin: 5px;
+        }
+
+        .content-section-right h2 {
+            font-size: 54px;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <a href="index.html">Home</a>
+        <div class="dropdown">
+            <button class="dropbtn">How to Play<i class="carrotDown"></i></button>
+            <div class="dropdownContent">
+                <a href="HowToPlay.html">Basics</a>
+                <a href="keywords.html">Abilities</a>
+                <a href="Aspects.html">The Aspects</a>
+                <a href="DeckBuilding.html">DeckBuilding</a>
+                <a href="WhyILike.html">Why I Like SWU</a>
+                <a href="UsefulResources.html">Useful Resources</a>
+            </div>
+        </div>
+        <a href="AboutMe.html">About The Author</a>
+        <a href="resource.html">Citations</a>
+        <a href="ShoppingForm.html">Products For Sale</a>
+    </div>
+
+    <div class="mainContent">
+        <div class="ButtonGroup">
+            <button type="button" class="toggle-button" id="heroism">Heroism</button>
+            <button type="button" class="toggle-button" id="neutral">Neutral</button>
+            <button type="button" class="toggle-button" id="villainy">Villainy</button>
+        </div>
+    </div>
+
+    <div class="content-section-left" id="heroism-content">
+        <img src="Aspects/Heroism.png" alt="" class="leftImage">
+        <h2>Heroism</h2>
+        <p>Heroism is a virtue that symbolizes bravery and courage.</p>
+    </div>
+
+    <div class="content-section-right" id="villainy-content">
+        <img src="Aspects/Villainy.png" alt="" class="rightImage">
+        <h2>Villainy</h2>
+        <p>Villainy is...</p>
+    </div>
+
+    <div class="mainContent">
+        <div class="ButtonGroup">
+            <button type="button" class="toggle-button" id="heroism-vigilance">Heroism/Vigilance</button>
+            <button type="button" class="toggle-button" id="vigilance">Vigilance</button>
+            <button type="button" class="toggle-button" id="vigilance-villainy">Vigilance/Villainy</button>
+        </div>
+    </div>
+
+    <div class="content-section-left" id="heroism-vigilance-content">
+        <h2>Heroism/Vigilance</h2>
+        <p>Vigilance is the action or state of keeping careful watch for possible danger or difficulties.</p>
+    </div>
+
+    <div class="content-section-left" id="vigilance-content">
+        <h2>Vigilance</h2>
+        <p>Vigilance is the action or state of keeping careful watch for possible danger or difficulties.</p>
+    </div>
+
+    <div class="mainContent">
+        <div class="ButtonGroup">
+            <button type="button" class="toggle-button" id="heroism-command">Heroism/Command</button>
+            <button type="button" class="toggle-button" id="command">Command</button>
+            <button type="button" class="toggle-button" id="command-villainy">Command/Villainy</button>
+        </div>
+    </div>
+
+    <div class="content-section-left" id="command-content">
+        <h2>Command</h2>
+        <p>Command represents leadership and authority in a structured setting.</p>
+    </div>
+
+    <div class="mainContent">
+        <div class="ButtonGroup">
+            <button type="button" class="toggle-button" id="heroism-aggression">Heroism/Aggression</button>
+            <button type="button" class="toggle-button" id="aggression">Aggression</button>
+            <button type="button" class="toggle-button" id="aggression-villainy">Aggression/Villainy</button>
+        </div>
+    </div>
+
+    <div class="content-section-left" id="aggression-content">
+        <h2>Aggression</h2>
+        <p>Aggression refers to behavior that causes harm or threatens harm to others.</p>
+    </div>
+
+    <div class="mainContent">
+        <div class="ButtonGroup">
+            <button type="button" class="toggle-button" id="heroism-cunning">Heroism/Cunning</button>
+            <button type="button" class="toggle-button" id="cunning">Cunning</button>
+            <button type="button" class="toggle-button" id="cunning-villainy">Cunning/Villainy</button>
+        </div>
+    </div>
+
+    <div class="content-section-left" id="cunning-content">
+        <h2>Cunning</h2>
+        <p>Cunning refers to skill in achieving one's ends through deception or cleverness.</p>
+    </div>
+
+    <script>
+document.addEventListener("DOMContentLoaded", function () {
+    // Function to activate content within a specific group
+    function activateContent(buttonId, group) {
+        const contentId = buttonId + "-content"; // Get content section ID
+        const contentSection = document.getElementById(contentId);
+
+        // Find all buttons within the group
+        const buttons = group.querySelectorAll('.toggle-button');
+
+        // Loop through each button in the group
+        buttons.forEach(btn => {
+            // Find the corresponding content section for this button
+            const associatedContent = document.getElementById(btn.id + "-content");
+
+            // Hide the associated content
+            if (associatedContent) {
+                associatedContent.classList.remove('active');
+            }
+        });
+
+        // Show the content section corresponding to the clicked button
+        if (contentSection) {
+            contentSection.classList.add('active');
+        }
+    }
+
+    // Process each ButtonGroup independently
+    const buttonGroups = document.querySelectorAll('.mainContent');
+    buttonGroups.forEach(group => {
+        const buttons = group.querySelectorAll('.toggle-button');
+
+        buttons.forEach(button => {
+            // Add event listener to each button to manage active state and content
+            button.addEventListener('click', () => {
+                // Deactivate all buttons in this ButtonGroup
+                buttons.forEach(btn => btn.classList.remove('active'));
+
+                // Activate the clicked button
+                button.classList.add('active');
+
+                // Activate the corresponding content
+                activateContent(button.id, group);
+            });
+        });
+    });
+
+    // Optional: Initialize page with default active buttons/content
+    const initialActiveButtons = [
+        "heroism",           // Heroism button
+        "vigilance",         // Vigilance button
+        "command",           // Command button
+        "aggression",        // Aggression button
+        "cunning"            // Cunning button
+    ];
+
+    initialActiveButtons.forEach(buttonId => {
+        const button = document.getElementById(buttonId);
+        if (button) {
+            const group = button.closest('.mainContent'); // Find the parent group for the button
+            button.classList.add('active'); // Mark the button as active
+            activateContent(buttonId, group); // Activate the corresponding content
+        }
+    });
+});
+
+    </script>
+    
+</body>
+</html>
