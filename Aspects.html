@@ -107,13 +107,23 @@
     </style>
 </head>
 <body>
-    <ul class="nav">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="HowToPlay.html">How to Play</a></li>
-        <li><a href="Aspects.html">The Aspects</a></li>
-        <li><a href="DeckBuilding.html">DeckBuilding</a></li>
-        <li><a href="ShoppingForm.html">Products For Sale</a></li>
-    </ul>
+    <div class="nav">
+        <a href="index.html">Home</a>
+        <div class="dropdown">
+            <button class="dropbtn">How to Play<i class="carrotDown"></i></button>
+            <div class="dropdownContent">
+                <a href="HowToPlay.html">Basics</a>
+                <a href="keywords.html">Abilities</a>
+                <a href="Aspects.html">The Aspects</a>
+                <a href="DeckBuilding.html">DeckBuilding</a>
+                <a href="WhyILike.html">Why I Like SWU</a>
+                <a href="UsefulResources.html">Useful Resources</a>
+            </div>
+        </div>
+        <a href="AboutMe.html">About The Author</a>
+        <a href="resource.html">Citations</a>
+        <a href="ShoppingForm.html">Products For Sale</a>
+    </div>
 
     <div class="mainContent">
         <div class="ButtonGroup">
@@ -141,6 +151,11 @@
             <button type="button" class="toggle-button" id="vigilance">Vigilance</button>
             <button type="button" class="toggle-button" id="vigilance-villainy">Vigilance/Villainy</button>
         </div>
+    </div>
+
+    <div class="content-section-left" id="heroism-vigilance-content">
+        <h2>Heroism/Vigilance</h2>
+        <p>Vigilance is the action or state of keeping careful watch for possible danger or difficulties.</p>
     </div>
 
     <div class="content-section-left" id="vigilance-content">
@@ -188,26 +203,24 @@
     </div>
 
     <script>
-document.addEventListener("DOMContentLoaded", function() {
-    // List of initially active buttons
-    const initialActiveButtons = [
-        "heroism",           // Heroism button
-        "vigilance",         // Vigilance button
-        "command",           // Command button
-        "aggression",        // Aggression button
-        "cunning"            // Cunning button
-    ];
-
-    // Function to activate content based on the clicked button
-    function activateContent(buttonId) {
-        // Find the corresponding content section for the button clicked
-        const contentId = buttonId + "-content";  // Add '-content' to buttonId to get content section ID
+document.addEventListener("DOMContentLoaded", function () {
+    // Function to activate content within a specific group
+    function activateContent(buttonId, group) {
+        const contentId = buttonId + "-content"; // Get content section ID
         const contentSection = document.getElementById(contentId);
 
-        // Hide all content sections
-        const allContentSections = document.querySelectorAll('.content-section-left');
-        allContentSections.forEach(section => {
-            section.classList.remove('active');
+        // Find all buttons within the group
+        const buttons = group.querySelectorAll('.toggle-button');
+
+        // Loop through each button in the group
+        buttons.forEach(btn => {
+            // Find the corresponding content section for this button
+            const associatedContent = document.getElementById(btn.id + "-content");
+
+            // Hide the associated content
+            if (associatedContent) {
+                associatedContent.classList.remove('active');
+            }
         });
 
         // Show the content section corresponding to the clicked button
@@ -216,36 +229,45 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
-    // Select all the buttons in the ButtonGroups
-    const buttonGroups = document.querySelectorAll('.ButtonGroup');
-
+    // Process each ButtonGroup independently
+    const buttonGroups = document.querySelectorAll('.mainContent');
     buttonGroups.forEach(group => {
         const buttons = group.querySelectorAll('.toggle-button');
 
         buttons.forEach(button => {
-            // Add event listener to each button to show its content and hide others
+            // Add event listener to each button to manage active state and content
             button.addEventListener('click', () => {
-                // Remove active class from all buttons in this group
+                // Deactivate all buttons in this ButtonGroup
                 buttons.forEach(btn => btn.classList.remove('active'));
-                
-                // Add active class to the clicked button
+
+                // Activate the clicked button
                 button.classList.add('active');
 
-                // Activate the content for the clicked button
-                activateContent(button.id);
+                // Activate the corresponding content
+                activateContent(button.id, group);
             });
         });
     });
 
-    // Initialize the page by activating the content for each initially active button
+    // Optional: Initialize page with default active buttons/content
+    const initialActiveButtons = [
+        "heroism",           // Heroism button
+        "vigilance",         // Vigilance button
+        "command",           // Command button
+        "aggression",        // Aggression button
+        "cunning"            // Cunning button
+    ];
+
     initialActiveButtons.forEach(buttonId => {
         const button = document.getElementById(buttonId);
         if (button) {
+            const group = button.closest('.mainContent'); // Find the parent group for the button
             button.classList.add('active'); // Mark the button as active
-            activateContent(buttonId); // Activate the corresponding content
+            activateContent(buttonId, group); // Activate the corresponding content
         }
     });
 });
+
     </script>
     
 </body>

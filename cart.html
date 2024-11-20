@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Style.css">
     <link rel="icon" type="image/x-icon" href="Aspects\SWU Aspects.png">
-    <title>Shop Custom SWU Supplies</title>
+    <title>Shop SWU Supplies</title>
 
     <style>
         .cartContent {
@@ -113,14 +113,24 @@
 </head>
 
 <body>
-    <ul class="nav">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="HowToPlay.html">How to Play</a></li>
-        <li><a href="Aspects.html">The Aspects</a></li>
-        <li><a href="DeckBuilding.html">DeckBuilding</a></li>
-        <li><a href="ShoppingForm.html">Products For Sale</a></li>
-    </ul>
-
+    <div class="nav">
+        <a href="index.html">Home</a>
+        <div class="dropdown">
+            <button class="dropbtn">How to Play<i class="carrotDown"></i></button>
+            <div class="dropdownContent">
+                <a href="HowToPlay.html">Basics</a>
+                <a href="keywords.html">Abilities</a>
+                <a href="Aspects.html">The Aspects</a>
+                <a href="DeckBuilding.html">DeckBuilding</a>
+                <a href="WhyILike.html">Why I Like SWU</a>
+                <a href="UsefulResources.html">Useful Resources</a>
+            </div>
+        </div>
+        <a href="AboutMe.html">About The Author</a>
+        <a href="resource.html">Citations</a>
+        <a href="ShoppingForm.html">Products For Sale</a>
+    </div>
+    
     <h1>Your Cart</h1>
     <div class="cartContent" id="cartContent"></div>
 
@@ -193,6 +203,20 @@
                 <label for="cvv"><b>CVV</b></label>
                 <input type="number" id="cvv" name="cvv" required placeholder="123">
             </div>
+
+            <p style="text-align: end;"><b>Price:</b> 0.00</p>
+
+            <h2>Shipping</h2>
+            <div style="justify-content: flex-end;">
+                <label for="Standard"><b>Standard - $6.00</b></label>
+                <input type="radio" id="Standard" name="Shipping" required><br>
+            </div>
+            <div style="justify-content: flex-end;">
+                <label for="Fast"><b>Fast - $9.99</b></label>
+                <input type="radio" id="Fast" name="Shipping" required>
+            </div>
+
+            <p style="text-align: end;">Total: $0.00</p>
 
             <br><input type="checkbox" id="agreement" name="agreement" required>
             <label for="agreement">Click to agree to our <a href="#">terms and conditions</a>.</label>
