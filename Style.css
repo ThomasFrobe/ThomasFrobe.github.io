@@ -6,32 +6,72 @@ a {
     color: wheat;
 }
 
+h1 {
+    text-align: center;
+    margin: 40px;
+    text-shadow: 0px 0px 0px 8px black;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+}
+
+h1 > a {
+    border: none;
+    outline: none;
+    background-color: inherit;
+    color: inherit;
+    font-family: inherit;
+    text-decoration: none;
+    margin: 0;
+}
+h1 > a > img {
+    position: absolute;
+    left: 50%;
+    Top: 60px;
+    transform: translate(-50%,-50%);
+    opacity: .5;
+    z-index: -1;
+    width: 200px;
+    height: auto;
+}
+
+.shoplink {
+    position: absolute;
+    right: 5px;
+    text-decoration: none;
+}
+
 .nav {
     display: flex;
     flex-direction: row;
-    background-color: rgba(0, 0, 0, 0.247);
-    border: 1px solid black;
-    justify-content: end;
+    justify-content: space-between;
+    padding-bottom: 10px;
+    border-bottom: 1px solid gold;
+    position: sticky;
 }
 
-.nav > a {
-    background-color: rgba(0, 0, 0, 1);
-    border: 1px solid wheat;
+.nav > a, .dropdown {
+    /* background-color: inherit; */
+    /*border: 1px solid wheat;*/
     padding-left: 10px;
     padding-right: 10px;
     text-decoration: none;
+    color:white;
 }
 
-.dropdown {
+.nav > a:hover, .dropdown:hover {
+    text-decoration: underline;
+    text-shadow: 0 0 0 2px black;
+}
+
+/* .dropdown {
     float: left;
     overflow: hidden;
-    background-color: rgba(0, 0, 0, 1);
-    border: 1px solid wheat;
-    padding-left: 10px;
+    /* background-color: rgba(0, 0, 0, 1); */
+    /*border: 1px solid wheat;*/
+    /* padding-left: 10px;
     padding-right: 10px;
     text-decoration: none;
-    color: wheat;
-}
+    color:white; 
+} */
 
 .dropdown > a {
     float: left;
@@ -52,9 +92,6 @@ a {
     font: inherit; /* Matches font to its parent */
     padding: 0; /* Removes any padding */
     margin: 0; /* Removes margin */
-}
-.nav a:hover, .dropdownContent a:hover{
-    background-color: rgb(46, 46, 46);
 }
 
 .dropdownContent {

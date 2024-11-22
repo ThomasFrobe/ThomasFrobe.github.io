@@ -204,19 +204,20 @@
                 <input type="number" id="cvv" name="cvv" required placeholder="123">
             </div>
 
-            <p style="text-align: end;"><b>Price:</b> 0.00</p>
+            <p style="text-align: end;" id="cartSubtotal"><b>Subtotal:</b> 0.00</p>
+            <p style="text-align: end;" id="tax">Tax: $0.00</p>
 
             <h2>Shipping</h2>
             <div style="justify-content: flex-end;">
                 <label for="Standard"><b>Standard - $6.00</b></label>
-                <input type="radio" id="Standard" name="Shipping" required><br>
+                <input type="radio" id="Standard" name="Shipping" required checked><br>
             </div>
             <div style="justify-content: flex-end;">
                 <label for="Fast"><b>Fast - $9.99</b></label>
                 <input type="radio" id="Fast" name="Shipping" required>
             </div>
 
-            <p style="text-align: end;">Total: $0.00</p>
+            <p style="text-align: end;" id="cartTotal">Total: $0.00</p>
 
             <br><input type="checkbox" id="agreement" name="agreement" required>
             <label for="agreement">Click to agree to our <a href="#">terms and conditions</a>.</label>
@@ -302,6 +303,7 @@
         function checkFormCompletion() {
             const requiredInputs = document.querySelectorAll("#checkoutForm input[required], #checkoutForm select[required]");
             const submitBtn = document.getElementById("submitBtn");
+            const agreementBtn = document.getElementById("agreement");
 
             let allFilled = true;
             requiredInputs.forEach((input) => {
@@ -310,15 +312,20 @@
                 }
             });
 
+            if (!agreementBtn.checked) {
+                allFilled = false;
+            }
+
             submitBtn.disabled = !allFilled;
         }
 
         // Cart item manipulation functions
         function updateCartItemPrice(index, newQuantity) {
             const cartItems = getCartItems();
-            const priceElement = document.querySelector(`#cartContent .cartItem[data-product-id="${index}"] .productPrice`);
+            const priceElement = document.querySelector(`.cartContent .cartItem[data-product-id="${index}"] .productPrice`);
             const price = parseFloat(cartItems[index].price.replace('$', ''));
             priceElement.innerHTML = `$${price.toFixed(2)} x ${newQuantity} = $${(price * newQuantity).toFixed(2)}`;
+            updateCartSummary();
         }
 
         function increment(index) {
@@ -352,7 +359,109 @@
                 }
             }
         }
-    
+
+        function handleQuantityChange(event) {
+            const inputElement = event.target; // The input element that triggered the event
+            const index = parseInt(inputElement.getAttribute('id').split('-')[1], 10); // Extract index from input ID
+            const newQuantity = parseInt(inputElement.value, 10); // Parse the new quantity
+
+            if (isNaN(newQuantity) || newQuantity < 0) {
+                alert("Quantity must be a valid number greater than or equal to 0.");
+                return;
+            }
+
+            const cartItems = getCartItems();
+
+            if (cartItems[index]) {
+                cartItems[index].quantity = newQuantity; // Update the quantity in the cartItems array
+                localStorage.setItem('cartItems', JSON.stringify(cartItems)); // Save updated cart to localStorage
+                updateCartItemPrice(index, newQuantity); // Update the price display in the UI
+
+                if (newQuantity === 0) {
+                    // If quantity is zero, remove the item from the cart
+                    cartItems.splice(index, 1);
+                    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+                    document.querySelector(`#cartContent .cartItem[data-product-id="${index}"]`).remove();
+
+                    // If the cart is empty, show the empty message
+                    if (cartItems.length === 0) {
+                        document.getElementById('cartContent').innerHTML = "<p>Your cart is empty.</p>";
+                    }
+                }
+            }
+        }
+
+        // Function to get the selected shipping cost
+        function getShippingCost() {
+            const shippingRadios = document.querySelectorAll('input[name="Shipping"]');
+            let shippingCost = 0;
+
+            shippingRadios.forEach((radio) => {
+                if (radio.checked) {
+                    shippingCost = radio.id === "Standard" ? 6.00 : 9.99; // Define costs for Standard and Fast shipping
+                }
+            });
+
+            return shippingCost;
+        }
+
+        function updateCartSummary() {
+            const cartItems = getCartItems(); // Retrieve cart items from localStorage
+            let subtotal = 0;
+
+            // Calculate the subtotal
+            cartItems.forEach((item) => {
+                const price = parseFloat(item.price.replace('$', '')); // Remove $ and parse as float
+                subtotal += price * item.quantity; // Add the item's total cost to the subtotal
+            });
+
+            // Define the tax rate (e.g., 10%)
+            const taxRate = 10; // 10%
+            const tax = subtotal * (taxRate / 100);
+            const shippingCost = getShippingCost(); // Get the selected shipping cost
+            const total = subtotal + tax + shippingCost;
+
+            // Update the subtotal, tax, shipping, and total in the UI
+            const subtotalElement = document.getElementById("cartSubtotal");
+            const taxElement = document.getElementById("tax");
+            const totalElement = document.getElementById("cartTotal");
+
+            if (subtotalElement) {
+                subtotalElement.innerHTML = `<b>Subtotal:</b> $${subtotal.toFixed(2)}`;
+            }
+            if (taxElement) {
+                taxElement.innerHTML = `<b>Tax (${taxRate}%):</b> $${tax.toFixed(2)}`;
+            }
+            if (totalElement) {
+                totalElement.innerHTML = `<b>Total:</b> $${total.toFixed(2)}`;
+            }
+        }
+
+        // Event listener for shipping selection change
+        function handleShippingChange() {
+            updateCartSummary();
+        }
+
+        window.onload = function () {
+            loadSavedUserData();
+            loadCartItems();
+            checkFormCompletion();
+            updateCartSummary();
+
+            // Add event listener to shipping options
+            const shippingRadios = document.querySelectorAll('input[name="Shipping"]');
+            shippingRadios.forEach((radio) => {
+                radio.addEventListener("change", handleShippingChange);
+            });
+
+            document.getElementById('checkoutForm').addEventListener('submit', handleFormSubmit);
+            document.getElementById('saveInfo').addEventListener('change', saveUserData);
+            document.querySelectorAll("#checkoutForm input, #checkoutForm select").forEach((input) => {
+                input.addEventListener("input", checkFormCompletion);
+            });
+            document.getElementById("agreement").addEventListener("input", checkFormCompletion);
+        };
+
         // Load the cart items from localStorage and render them
         function loadCartItems() {
             const cartItems = getCartItems();
@@ -362,7 +471,7 @@
                 cartItems.forEach((item, index) => {
                     const cartItemDiv = document.createElement('div');
                     cartItemDiv.classList.add('cartItem');
-                    cartItemDiv.setAttribute('data-product-id', item.id);
+                    cartItemDiv.setAttribute('data-product-id', index);
     
                     cartItemDiv.innerHTML = `
                         <div class="productImage">${item.image}</div>
@@ -382,23 +491,14 @@
                         </div>
                     `;
                     cartContent.appendChild(cartItemDiv);
+
+                    const quantityInput = document.getElementById(`quantity-${index}`);
+                    quantityInput.addEventListener("change", handleQuantityChange);
                 });
             } else {
                 cartContent.innerHTML = "<p>Your cart is empty.</p>";
             }
         }
-    
-        window.onload = function() {
-            loadSavedUserData();
-            loadCartItems();
-            checkFormCompletion();
-            //alert("Note: This shopping cart is for demonstration purposes only. Your information will not go anywhere.")
-            document.getElementById('checkoutForm').addEventListener('submit', handleFormSubmit);
-            document.getElementById('saveInfo').addEventListener('change', saveUserData);
-            document.querySelectorAll("#checkoutForm input, #checkoutForm select").forEach((input) => {
-                input.addEventListener("input", checkFormCompletion);
-            });
-        };
     </script>
 </body>
 </html>
