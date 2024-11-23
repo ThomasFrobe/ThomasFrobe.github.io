@@ -1,6 +1,7 @@
 body {
     background-color: rgba(0, 0, 0, 0.756);
     color: white;
+    margin: 0px;
 }
 a {
     color: wheat;
@@ -8,7 +9,7 @@ a {
 
 h1 {
     text-align: center;
-    margin: 40px;
+    padding: 20px;
     text-shadow: 0px 0px 0px 8px black;
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
 }
@@ -22,10 +23,10 @@ h1 > a {
     text-decoration: none;
     margin: 0;
 }
-h1 > a > img {
+h1 > a > img, h1 > img {
     position: absolute;
     left: 50%;
-    Top: 60px;
+    Top: 65px;
     transform: translate(-50%,-50%);
     opacity: .5;
     z-index: -1;
@@ -37,6 +38,13 @@ h1 > a > img {
     position: absolute;
     right: 5px;
     text-decoration: none;
+    font-size: 24px;
+    background-color: green;
+    border-radius: 50%;
+}
+
+.shoplink:hover {
+    background-color: lightgreen;
 }
 
 .nav {
@@ -46,20 +54,41 @@ h1 > a > img {
     padding-bottom: 10px;
     border-bottom: 1px solid gold;
     position: sticky;
+    text-shadow: 0px 0px 0px 12px black;
+    margin-bottom: 0px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
-.nav > a, .dropdown {
-    /* background-color: inherit; */
-    /*border: 1px solid wheat;*/
+.nav > button {
+    all: unset;
+    border: none;
+    outline: none;
+    background-color: inherit;
+    color: inherit;
+    font-family: inherit;
+    margin: 0;
+    cursor: pointer;
+    display: inline;
+    color: inherit;
+    font: inherit;
+    padding: 0;
+    margin: 0;
+}
+
+.nav > a, .dropdown, .nav > button {
     padding-left: 10px;
     padding-right: 10px;
-    text-decoration: none;
+    text-shadow: 0 0 0 2px black;
+    text-decoration: underline;
+    text-decoration-color: transparent;
     color:white;
+    transition: text-decoration-color .3s ease;
+    font-size: 1.5vw;
 }
 
-.nav > a:hover, .dropdown:hover {
-    text-decoration: underline;
-    text-shadow: 0 0 0 2px black;
+.nav > a:hover, .dropdown:hover, .nav > button:hover {
+    text-decoration-color: white;
 }
 
 /* .dropdown {
@@ -73,7 +102,7 @@ h1 > a > img {
     color:white; 
 } */
 
-.dropdown > a {
+/* .dropdown > a {
     float: left;
     text-align: center;
 }
@@ -85,13 +114,13 @@ h1 > a > img {
     color: inherit;
     font-family: inherit;
     margin: 0;
-    all: unset; /* Resets all inherited or default button styles */
-    cursor: pointer; /* Adds a pointer cursor for user feedback */
-    display: inline; /* Ensure it behaves like inline text (if desired) */
-    color: inherit; /* Matches text color to its parent */
-    font: inherit; /* Matches font to its parent */
-    padding: 0; /* Removes any padding */
-    margin: 0; /* Removes margin */
+    all: unset;
+    cursor: pointer;
+    display: inline;
+    color: inherit;
+    font: inherit;
+    padding: 0;
+    margin: 0;
 }
 
 .dropdownContent {
@@ -112,6 +141,23 @@ h1 > a > img {
 
 .dropdown:hover .dropdownContent {
     display: block;
+} */
+
+.mainContent {
+    background-color: black;
+    margin: 0px;
+}
+.mainContent > div {
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 0px;
+    padding-left: 50px;
+    padding-right: 50px;
+    background-color: #3E3E3E;
+}
+
+.mainContent > div > h1 {
+    margin-top: 0px;
 }
 
 .key {

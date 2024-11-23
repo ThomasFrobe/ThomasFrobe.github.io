@@ -10,7 +10,10 @@
         .productContainer {
             display: flex;
             flex-direction: column;
+            align-items: center;
+            justify-self: center;
             width: 95%;
+            margin-top: 30px;
         }
 
         .productRow {
@@ -112,23 +115,14 @@
 
             .productRow {
                 display: grid;
-                grid-template-columns: auto 1fr auto;
+                grid-template-columns: 1fr;
                 grid-template-areas: 
-                    "image details controls";
-                gap: 10px;
-            }
-
-            /* Adjust layout for narrower screens */
-            @media (max-width: 600px) {
-                .productRow {
-                    grid-template-columns: 1fr;
-                    grid-template-areas: 
                         "image"
                         "details"
                         "controls";
-                    justify-items: center;
-                    max-width: 225px;
-                }
+                justify-items: center;
+                max-width: 225px;
+                gap: 10px;
             }
 
             .productImage {
@@ -180,39 +174,30 @@
 </head>
 
 <body>
+    <div onclick="gotoURL('cart.html')" class="shoplink">🛒</div>
+    <h1 onclick="gotoURL('HowToPlay.html')"><img src="Aspects/SWU Aspects.png" alt="">The Star Wars Unlimited Fan</h1>
+
     <div class="nav">
-        <a href="index.html">Home</a>
-        <div class="dropdown">
-            <button class="dropbtn">How to Play<i class="carrotDown"></i></button>
-            <div class="dropdownContent">
-                <a href="HowToPlay.html">Basics</a>
-                <a href="keywords.html">Abilities</a>
-                <a href="Aspects.html">The Aspects</a>
-                <a href="DeckBuilding.html">DeckBuilding</a>
-                <a href="WhyILike.html">Why I Like SWU</a>
-                <a href="UsefulResources.html">Useful Resources</a>
-            </div>
-        </div>
-        <a href="AboutMe.html">About The Author</a>
-        <a href="resource.html">Citations</a>
-        <a href="ShoppingForm.html">Products For Sale</a>
+        <button onclick="gotoURL('HowToPlay.html')">Basics</button>
+        <button onclick="gotoURL('Keywords.html')">Abilities</button>
+        <button onclick="gotoURL('Aspects.html')">The Aspects</button>
+        <button onclick="gotoURL('DeckBuilding.html')">DeckBuilding</button>
+        <button onclick="gotoURL('WhyILike.html')">Why I Like SWU</button>
+        <button onclick="gotoURL('UsefulResources.html')">Useful Resources</button>
+        <button onclick="gotoURL('ShoppingForm.html')">Products For Sale</button>
     </div>
 
     <div class="productContainer">
-        <!-- Product 1 -->
         <div class="productRow" data-product-id="1">
-            <!-- Product Image -->
             <div class="productImage">
                 <img src="https://via.placeholder.com/100" alt="Product Image">
             </div>
     
-            <!-- Product Details -->
             <div class="productDetails">
                 <h2 class="productName">Product 1</h2>
                 <p class="productDescription">Description for Product 1.</p>
             </div>
     
-            <!-- Quantity Controls -->
             <div class="quantityControls">
                 <p class="productPrice">$19.99</p>
                 <div>
@@ -223,20 +208,16 @@
             </div>
         </div>
     
-        <!-- Product 2 -->
         <div class="productRow" data-product-id="2">
-            <!-- Product Image -->
             <div class="productImage">
                 <img src="https://via.placeholder.com/100" alt="Product Image">
             </div>
     
-            <!-- Product Details -->
             <div class="productDetails">
                 <h2 class="productName">Product 2</h2>
                 <p class="productDescription">Description for Product 2.</p>
             </div>
     
-            <!-- Quantity Controls -->
             <div class="quantityControls">
                 <p class="productPrice">$29.99</p>
                 <div>
@@ -247,15 +228,10 @@
             </div>
         </div>
     </div>
-
-    <!-- Shopping cart icon -->
-    <div class="purchaseButton" onclick="goToCart()">
-        🛒
-    </div>
-
+    
     <script>
         window.onload = function() {
-            alert("Note: These products are not for sale. This page is for demonstration purposes only. Any information inputted on the next page will not actually be stored or otherwised used to charge your card.")
+            //alert("Note: These products are not for sale. This page is for demonstration purposes only. Any information inputted on the next page will not actually be stored or otherwised used to charge your card.")
         }
 
         // Increment and decrement functions take product ID as an argument
@@ -272,7 +248,38 @@
         }
     
         // Function to gather all products data and store them in localStorage
-        function goToCart() {
+        // function goToCart() {
+        //     const productRows = document.querySelectorAll(".productRow");
+        //     const cartItems = [];
+    
+        //     productRows.forEach(row => {
+        //         const productId = row.getAttribute("data-product-id");
+        //         const productName = row.querySelector(".productName").innerText;
+        //         const productDescription = row.querySelector(".productDescription").innerText;
+        //         const productPrice = row.querySelector(".productPrice").innerText; // Get price
+        //         const quantity = row.querySelector(`#quantity-${productId}`).value;
+        //         const productImage = row.querySelector(".productImage").innerHTML;
+    
+        //         if (quantity > 0) { // Only add if quantity is greater than 0
+        //             cartItems.push({
+        //                 id: productId,
+        //                 name: productName,
+        //                 description: productDescription,
+        //                 price: productPrice, // Store price
+        //                 quantity: parseInt(quantity),
+        //                 image: productImage,
+        //             });
+        //         }
+        //     });
+    
+        //     // Store the cart items in localStorage
+        //     localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    
+        //     // Redirect to the cart page
+        //     window.location.href = "cart.html";
+        // }
+
+        function gotoURL(url) {
             const productRows = document.querySelectorAll(".productRow");
             const cartItems = [];
     
@@ -300,9 +307,8 @@
             localStorage.setItem('cartItems', JSON.stringify(cartItems));
     
             // Redirect to the cart page
-            window.location.href = "cart.html";
+            window.location.href = url;
         }
     </script>
-    
 </body>
 </html>
