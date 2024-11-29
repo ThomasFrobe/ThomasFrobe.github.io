@@ -26,8 +26,8 @@ h1 > a {
 h1 > a > img, h1 > img {
     position: absolute;
     left: 50%;
-    Top: 65px;
-    transform: translate(-50%,-50%);
+    Top: -35px;
+    transform: translate(-50%,0);
     opacity: .5;
     z-index: -1;
     width: 200px;
@@ -94,15 +94,15 @@ h1 > a > img, h1 > img {
 /* .dropdown {
     float: left;
     overflow: hidden;
-    /* background-color: rgba(0, 0, 0, 1); */
-    /*border: 1px solid wheat;*/
-    /* padding-left: 10px;
+    background-color: rgba(0, 0, 0, 1);
+    order: 1px solid wheat;
+    padding-left: 10px;
     padding-right: 10px;
     text-decoration: none;
     color:white; 
-} */
+}
 
-/* .dropdown > a {
+.dropdown > a {
     float: left;
     text-align: center;
 }
@@ -153,24 +153,109 @@ h1 > a > img, h1 > img {
     margin-top: 0px;
     padding-left: 50px;
     padding-right: 50px;
+    padding-bottom: 50px;
     background-color: #3E3E3E;
+    box-shadow: 0px 0px 0px 100% white;
 }
 
 .mainContent > div > h1 {
     margin-top: 0px;
 }
 
-.key {
-    color: red;
+.key::after {
+    color: rgb(255, 20, 20);
+    font-weight: bold;
+    text-transform: uppercase;
+    font-variant: small-caps;
+    font-size: .8em;
 }
 
-key {
-    color: red;
+/* .key:first-letter {
+    font-size: 1.5em;
+    font-variant: normal;
+    color:blue;
 }
+
+.key::after {
+    color: rgb(255, 20, 20);
+    font-weight: bold;
+    text-transform: uppercase;
+    font-variant: small-caps;
+    font-size: .8em;
+} */
+
+.trait {
+    /* color: black; */
+    font-weight: bold;
+    font-family: Arial, inherit;
+    font-style: italic;
+    /* text-shadow: 0px 0px 5px white; */
+}
+
+.card {
+    color:rgb(105, 105, 255);
+    text-decoration: underline;
+    /* position: relative; */
+}
+
+.card > img:first-of-type {
+    display: none;
+    position: absolute;
+    left: 50%;
+    /* transform: translate(-50%, 5%); */
+}
+
+.card > img:nth-of-type(2) {
+    display: none;
+    position: absolute;
+    left: 50%;
+    /* transform: translate(-50%, 107%); */
+}
+
+.card:hover {
+    color:aqua;
+}
+
+.card:hover > img {
+    display:block;
+}
+
+.card.top-half > img {
+    transform: translate(-50%, 5%);
+}
+
+.card.top-half > img:nth-of-type(2) {
+    transform: translate(-50%, 107%);
+}
+
+.card.bottom-half > img {
+    transform: translate(-50%, -110%);
+}
+
+.card.bottom-half > img:nth-of-type(2) {
+    transform: translate(-50%, -212%);
+}
+
+.resource {
+    display: inline-block;
+    width: 28px;
+    height: 32px;
+    background-image: url('Aspects/Resource.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 30px;
+    text-shadow: -1px 2px black; /*1px -1px black, -1px -1px black, 1px 2px black;*/
+  }
 
 .footer {
     background-color: black;
-    border: 1px solid white;
+    border: 1px solid gold;
     text-align: center;
     padding: 10px;
+    margin-top: 0px;
 }

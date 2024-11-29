@@ -7,7 +7,15 @@
     <link rel="stylesheet" href="Style.css">
     <link rel="icon" type="image/x-icon" href="Aspects\SWU Aspects.png">
     <style>
-        .mainContent {
+        .contentSection {
+            position: relative;
+            overflow: hidden;
+            padding: 20px;
+            color: white;
+            text-shadow: 0px 0px 7px black;
+        }
+
+        .buttonContent {
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -16,6 +24,8 @@
         .ButtonGroup {
             display: inline-flex;
             align-self: center;
+            margin-top: 40px;
+            margin-bottom: 10px;
         }
 
         .toggle-button {
@@ -37,32 +47,34 @@
         }
 
         .content-section-left {
-            position: relative; /* Make it a positioning context for the image and text */
-            height: 400px; /* Set the height of the container */
-            overflow: hidden; /* Ensures the image doesn't overflow outside the container */
+            position: relative;
+            height: 400px;
+            overflow: hidden;
             padding: 20px;
-            color: white; /* Make the text white for better contrast on the image */
+            color: white;
             text-shadow: 0px 0px 7px black;
             display: none;
         }
         .content-section-left.active {
-            display: block;
+            display: flex;
+            flex-direction: column;
         }
 
         .leftImage {
-            position: absolute; /* Take it out of the normal flow */
-            top: 0; /* Align the image to the top of the container */
-            left: -230px; /* Align the image to the left of the container */
-            width: auto; /* Set image width to 50% of the container's width */
-            height: 100%; /* Maintain aspect ratio */
-            z-index: -1; /* Ensure image stays behind the text */
+            position: absolute;
+            top: 0;
+            left: -200px;
+            width: auto;
+            height: 100%;
+            z-index: 0;
             opacity: 50%;
         }
 
         .content-section-left h2, 
-        .content-section-left p {
-            position: relative; /* Ensures text stays above the image */
-            z-index: 1; /* Make sure text appears above the image */
+        .content-section-left p,
+        .content-section-left ul {
+            position: relative;
+            z-index: 2;
             margin: 5px;
         }
 
@@ -71,37 +83,77 @@
         }
 
         .content-section-right {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+            padding: 20px;
+            color: white;
+            text-shadow: 0px 0px 7px black;
+            display: none;
+        }
+        .content-section-right.active {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        .rightImage {
+            position: absolute;
+            top: 0;
+            right: -200px;
+            width: auto;
+            height: 100%;
+            z-index: 0;
+            opacity: 50%;
+        }
+
+        .content-section-right h2, 
+        .content-section-right p,
+        .content-section-right ul {
+            position: relative;
+            z-index: 2;
+            margin: 5px;
+        }
+
+        .content-section-right h2 {
+            font-size: 54px;
+        }
+
+        .content-section-center {
             position: relative; /* Make it a positioning context for the image and text */
             height: 400px; /* Set the height of the container */
             overflow: hidden; /* Ensures the image doesn't overflow outside the container */
             padding: 20px;
             color: white; /* Make the text white for better contrast on the image */
             text-shadow: 0px 0px 7px black;
-            text-align: right;
             display: none;
         }
-        .content-section-right.active {
-            display: block;
+        .content-section-center.active {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        .rightImage {
-            position: absolute; /* Take it out of the normal flow */
-            top: 0; /* Align the image to the top of the container */
-            right: -230px; /* Align the image to the left of the container */
-            width: auto; /* Set image width to 50% of the container's width */
-            height: 100%; /* Maintain aspect ratio */
-            z-index: -1; /* Ensure image stays behind the text */
+        .centerImage {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: auto;
+            height: 100%;
+            z-index: 0;
             opacity: 50%;
         }
 
-        .content-section-right h2, 
-        .content-section-right p {
-            position: relative; /* Ensures text stays above the image */
-            z-index: 1; /* Make sure text appears above the image */
+        .content-section-center h2, 
+        .content-section-center p,
+        .content-section-center ul {
+            position: relative;
+            z-index: 2;
             margin: 5px;
         }
 
-        .content-section-right h2 {
+        .content-section-center h2 {
             font-size: 54px;
         }
     </style>
@@ -117,83 +169,200 @@
         <a href="DeckBuilding.html">DeckBuilding</a>
         <a href="WhyILike.html">Why I Like SWU</a>
         <a href="UsefulResources.html">Useful Resources</a>
-    </div> <br>
-
-    <div class="mainContent">
-        <div class="ButtonGroup">
-            <button type="button" class="toggle-button" id="heroism">Heroism</button>
-            <button type="button" class="toggle-button" id="neutral">Neutral</button>
-            <button type="button" class="toggle-button" id="villainy">Villainy</button>
-        </div>
-    </div>
-
-    <div class="content-section-left" id="heroism-content">
-        <img src="Aspects/Heroism.png" alt="" class="leftImage">
-        <h2>Heroism</h2>
-        <p>Heroism is a virtue that symbolizes bravery and courage.</p>
-    </div>
-
-    <div class="content-section-right" id="villainy-content">
-        <img src="Aspects/Villainy.png" alt="" class="rightImage">
-        <h2>Villainy</h2>
-        <p>Villainy is...</p>
+        <a href="ShoppingForm.html">Products for Sale</a>
     </div>
 
     <div class="mainContent">
-        <div class="ButtonGroup">
-            <button type="button" class="toggle-button" id="heroism-vigilance">Heroism/Vigilance</button>
-            <button type="button" class="toggle-button" id="vigilance">Vigilance</button>
-            <button type="button" class="toggle-button" id="vigilance-villainy">Vigilance/Villainy</button>
+        <div style="padding-left: 0px; padding-right: 0px;">
+            
+            <div class="contentSection">
+                <h2>Neutral</h2>
+                <ul>
+                    <li>Tend to be weak for their cost</li>
+                    <li>Very few rares</li>
+                    <li>Early-Midgame cards</li>
+                    <li>Usable in any deck</li>
+                </ul>
+            </div>
+
+            <div class="buttonContent">
+                <div class="ButtonGroup">
+                    <button type="button" class="toggle-button" id="heroism">Heroism</button>
+                    <button type="button" class="toggle-button" id="villainy">Villainy</button>
+                </div>
+            </div>
+
+            <p style="padding-left: 30px; padding-right: 30px;">Heroism/Villainy represents the core of Star Wars Unlimited. All leaders are either Heroic or Villainous.</p>
+        
+            <div class="content-section-left" id="heroism-content">
+                <img src="Aspects/Heroism.png" alt="" class="leftImage">
+                <h2>Heroism</h2>
+                <ul>
+                    <li>Stronger, but more expensive early-late game</li>
+                    <li>Healing</li>
+                    <li>Easier access to <strong><i>Force</i></strong> units</li>
+                    <li><span class="key">Coordinate</span></li>
+                </ul>
+            </div>
+        
+            <div class="content-section-right" id="villainy-content">
+                <img src="Aspects/Villainy.png" alt="" class="rightImage">
+                <h2>Villainy</h2>
+                <ul>
+                    <li>Weaker, but cheaper early-midgame</li>
+                    <li>Powerful late game</li>
+                    <li><span class="key">Exploit</span></li>
+                </ul>
+            </div>
+        
+            <div class="buttonContent">
+                <div class="ButtonGroup">
+                    <button type="button" class="toggle-button" id="heroism-vigilance">Heroism/Vigilance</button>
+                    <button type="button" class="toggle-button" id="vigilance">Vigilance</button>
+                    <button type="button" class="toggle-button" id="vigilance-villainy">Vigilance/Villainy</button>
+                </div>
+            </div>
+        
+            <div class="content-section-left" id="heroism-vigilance-content">
+                <img src="Aspects/Heroism.png" alt="" class="leftImage">
+                <img src="Aspects/Vigilance.png" alt="" class="rightImage">
+                <h2>Heroism/Vigilance</h2>
+                <ul>
+                    <li>Heavy <span class="key">Restore</span></li>
+                    <li><span class="key"></span></li>
+                </ul>
+            </div>
+        
+            <div class="content-section-center" id="vigilance-content">
+                <h2>Vigilance</h2>
+                <img src="Aspects/Vigilance.png" alt="" class="centerImage">
+                <ul>
+                    <li>More defensive</li>
+                    <li>Units are tougher</li>
+                    <li>Upgrade heavy</li>
+                    <li>Instant death spells</li>
+                </ul>
+            </div>
+
+            <div class="content-section-right" id="vigilance-villainy-content">
+                <h2>Vigilance/Villainy</h2>
+                <img src="Aspects/Vigilance.png" alt="" class="leftImage">
+                <img src="Aspects/Villainy.png" alt="" class="rightImage">
+                <ul>
+                    <li>Powerful Endgame moves</li>
+                    <li></li>
+                </ul>
+            </div>
+        
+            <div class="buttonContent">
+                <div class="ButtonGroup">
+                    <button type="button" class="toggle-button" id="heroism-command">Heroism/Command</button>
+                    <button type="button" class="toggle-button" id="command">Command</button>
+                    <button type="button" class="toggle-button" id="command-villainy">Command/Villainy</button>
+                </div>
+            </div>
+        
+            <div class="content-section-left" id="heroism-command-content">
+                <h2>Command</h2>
+                <img src="Aspects/Heroism.png" alt="" class="leftImage">
+                <img src="Aspects/Command.png" alt="" class="rightImage">
+                <ul>
+                    <li><span class="key">Restore</span></li>
+                </ul>
+            </div>
+
+            <div class="content-section-center" id="command-content">
+                <h2>Command</h2>
+                <img src="Aspects/Command.png" alt="" class="centerImage">
+                <ul>
+                    <li>Ramp</li>
+                    <li>Unit Buffing</li>
+                    <li>Unit deals damage equal to its power</li>
+                </ul>
+            </div>
+        
+            <div class="content-section-left" id="command-villainy-content">
+                <h2>Command</h2>
+                <img src="Aspects/Command.png" alt="" class="leftImage">
+                <img src="Aspects/Villainy.png" alt="" class="rightImage">
+                <ul>
+                    <li></li>
+                </ul>
+            </div>
+
+            <div class="buttonContent">
+                <div class="ButtonGroup">
+                    <button type="button" class="toggle-button" id="heroism-aggression">Heroism/Aggression</button>
+                    <button type="button" class="toggle-button" id="aggression">Aggression</button>
+                    <button type="button" class="toggle-button" id="aggression-villainy">Aggression/Villainy</button>
+                </div>
+            </div>
+        
+            <div class="content-section-left" id="heroism-aggression-content">
+                <h2>Heroism/Aggression</h2>
+                <img src="Aspects/Heroism.png" alt="" class="leftImage">
+                <img src="Aspects/Aggression.png" alt="" class="rightImage">
+                <ul>
+                    <li></li>
+                </ul>
+            </div>
+
+            <div class="content-section-center" id="aggression-content">
+                <h2>Aggression</h2>
+                <img src="Aspects/Aggression.png" alt="" class="centerImage">
+                <ul>
+                    <li>Higher attack power</li>
+                    <li>Fast attack damage</li>
+                    <li>Deal damage spells</li>
+                    <li>Hand manipulation</li>
+                </ul>
+            </div>
+
+            <div class="content-section-left" id="aggression-villainy-content">
+                <h2>Aggression/Villainy</h2>
+                <img src="Aspects/Aggression.png" alt="" class="leftImage">
+                <img src="Aspects/Villainy.png" alt="" class="rightImage">
+                <ul>
+                    <li></li>
+                </ul>
+            </div>
+        
+            <div class="buttonContent">
+                <div class="ButtonGroup">
+                    <button type="button" class="toggle-button" id="heroism-cunning">Heroism/Cunning</button>
+                    <button type="button" class="toggle-button" id="cunning">Cunning</button>
+                    <button type="button" class="toggle-button" id="cunning-villainy">Cunning/Villainy</button>
+                </div>
+            </div>
+        
+            <div class="content-section-left" id="heroism-cunning-content">
+                <h2>Heroism/Aggression</h2>
+                <img src="Aspects/Heroism.png" alt="" class="leftImage">
+                <img src="Aspects/Cunning.png" alt="" class="rightImage">
+                <ul>
+                    <li></li>
+                </ul>
+            </div>
+
+            <div class="content-section-center" id="cunning-content">
+                <h2>Aggression</h2>
+                <img src="Aspects/Cunning.png" alt="" class="centerImage">
+                <ul>
+                    <li>Tempo</li>
+                    <li>Short Term value orientied</li>
+                    <li>Hand manipulation</li>
+                </ul>
+            </div>
+
+            <div class="content-section-left" id="cunning-villainy-content">
+                <h2>Aggression/Villainy</h2>
+                <img src="Aspects/Cunning.png" alt="" class="leftImage">
+                <img src="Aspects/Villainy.png" alt="" class="rightImage">
+                <ul>
+                    <li></li>
+                </ul>
+            </div>
         </div>
-    </div>
-
-    <div class="content-section-left" id="heroism-vigilance-content">
-        <h2>Heroism/Vigilance</h2>
-        <p>Vigilance is the action or state of keeping careful watch for possible danger or difficulties.</p>
-    </div>
-
-    <div class="content-section-left" id="vigilance-content">
-        <h2>Vigilance</h2>
-        <p>Vigilance is the action or state of keeping careful watch for possible danger or difficulties.</p>
-    </div>
-
-    <div class="mainContent">
-        <div class="ButtonGroup">
-            <button type="button" class="toggle-button" id="heroism-command">Heroism/Command</button>
-            <button type="button" class="toggle-button" id="command">Command</button>
-            <button type="button" class="toggle-button" id="command-villainy">Command/Villainy</button>
-        </div>
-    </div>
-
-    <div class="content-section-left" id="command-content">
-        <h2>Command</h2>
-        <p>Command represents leadership and authority in a structured setting.</p>
-    </div>
-
-    <div class="mainContent">
-        <div class="ButtonGroup">
-            <button type="button" class="toggle-button" id="heroism-aggression">Heroism/Aggression</button>
-            <button type="button" class="toggle-button" id="aggression">Aggression</button>
-            <button type="button" class="toggle-button" id="aggression-villainy">Aggression/Villainy</button>
-        </div>
-    </div>
-
-    <div class="content-section-left" id="aggression-content">
-        <h2>Aggression</h2>
-        <p>Aggression refers to behavior that causes harm or threatens harm to others.</p>
-    </div>
-
-    <div class="mainContent">
-        <div class="ButtonGroup">
-            <button type="button" class="toggle-button" id="heroism-cunning">Heroism/Cunning</button>
-            <button type="button" class="toggle-button" id="cunning">Cunning</button>
-            <button type="button" class="toggle-button" id="cunning-villainy">Cunning/Villainy</button>
-        </div>
-    </div>
-
-    <div class="content-section-left" id="cunning-content">
-        <h2>Cunning</h2>
-        <p>Cunning refers to skill in achieving one's ends through deception or cleverness.</p>
     </div>
 
     <script>
@@ -224,7 +393,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Process each ButtonGroup independently
-    const buttonGroups = document.querySelectorAll('.mainContent');
+    const buttonGroups = document.querySelectorAll('.buttonContent');
     buttonGroups.forEach(group => {
         const buttons = group.querySelectorAll('.toggle-button');
 
@@ -255,7 +424,7 @@ document.addEventListener("DOMContentLoaded", function () {
     initialActiveButtons.forEach(buttonId => {
         const button = document.getElementById(buttonId);
         if (button) {
-            const group = button.closest('.mainContent'); // Find the parent group for the button
+            const group = button.closest('.buttonContent'); // Find the parent group for the button
             button.classList.add('active'); // Mark the button as active
             activateContent(buttonId, group); // Activate the corresponding content
         }
@@ -264,5 +433,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     </script>
     
+    <div class="footer">
+        <p>All content used under Fair Use act of 1976</p>
+        <p>Website is not associated with Fantasy Flight Games, Lucasfilm, or Disney</p>
+        <p>Website is used for demenstration and learning purposes only</p>
+        <p><a href="resource.html">Click here for citations</a></p>
+    </div>
 </body>
 </html>

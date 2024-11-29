@@ -13,7 +13,9 @@
             align-items: center;
             justify-self: center;
             width: 95%;
-            margin-top: 30px;
+            margin-top: 0px;
+            padding-top: 30px;
+            background-color: #3E3E3E;
         }
 
         .productRow {
@@ -36,7 +38,7 @@
 
         .productImage img {
             width: 100px;
-            height: auto;
+            height: 100px;
             border-radius: 8px;
         }
 
@@ -52,7 +54,7 @@
             color: #c2c2c2;
         }
 
-        .productDetails p {
+        .productDescription > p, .productDescription > ul, .productDetails > p {
             font-size: 0.9em;
             color: #666;
         }
@@ -146,6 +148,10 @@
                 flex-direction: row;
                 align-self: center;
             }
+
+            .hide, .productDescription > ul {
+                display: none;
+            }
         }
 
         .purchaseButton {
@@ -190,16 +196,16 @@
     <div class="productContainer">
         <div class="productRow" data-product-id="1">
             <div class="productImage">
-                <img src="https://via.placeholder.com/100" alt="Product Image">
+                <img src="Images/SparkofRebelliondisplay_800x.webp" alt="Product Image">
             </div>
     
             <div class="productDetails">
-                <h2 class="productName">Product 1</h2>
-                <p class="productDescription">Description for Product 1.</p>
+                <h2 class="productName">Spark of Rebellion Booster Box</h2>
+                <p class="productDescription">Provides 24 Spark of Rebellion Booster Packs.</p>
             </div>
     
             <div class="quantityControls">
-                <p class="productPrice">$19.99</p>
+                <p class="productPrice">$99.99</p>
                 <div>
                     <button onclick="decrement(1)">-</button>
                     <input type="number" class="quantityInput" id="quantity-1" value="0" min="0">
@@ -207,23 +213,133 @@
                 </div>
             </div>
         </div>
-    
-        <div class="productRow" data-product-id="2">
+
+        <div class="productRow" data-product-id="4">
             <div class="productImage">
-                <img src="https://via.placeholder.com/100" alt="Product Image">
+                <img src="Images/SotRPack.webp" alt="Product Image">
             </div>
     
             <div class="productDetails">
-                <h2 class="productName">Product 2</h2>
-                <p class="productDescription">Description for Product 2.</p>
+                <h2 class="productName">Spark of Rebellion Booster Pack</h2>
+                <div class="productDescription">
+                    <p>Provides 16 Spark of Rebellion cards for play in your Star Wars Unlimited games. <span class="hide">All packs come included with:</span></p>
+                    <ul>
+                        <li>1 Leader</li>
+                        <li>1 Base</li>
+                        <li>9 Commons</li>
+                        <li>3 Uncommons</li>
+                        <li>1 Rare</li>
+                        <li>1 Foil</li>
+                    </ul>
+                </div>
             </div>
     
             <div class="quantityControls">
-                <p class="productPrice">$29.99</p>
+                <p class="productPrice">$9.99</p>
+                <div>
+                    <button onclick="decrement(4)">-</button>
+                    <input type="number" class="quantityInput" id="quantity-4" value="0" min="0">
+                    <button onclick="increment(4)">+</button>
+                </div>
+            </div>
+        </div>
+    
+        <div class="productRow" data-product-id="2">
+            <div class="productImage">
+                <img src="Images/ShadowsBooster.webp" alt="Product Image">
+            </div>
+    
+            <div class="productDetails">
+                <h2 class="productName">Shadows of the Galaxy Booster Box</h2>
+                <p class="productDescription">Provides 24 Shadows of the Galaxy Booster Packs.</p>
+            </div>
+    
+            <div class="quantityControls">
+                <p class="productPrice">$99.99</p>
                 <div>
                     <button onclick="decrement(2)">-</button>
                     <input type="number" class="quantityInput" id="quantity-2" value="0" min="0">
                     <button onclick="increment(2)">+</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="productRow" data-product-id="5">
+            <div class="productImage">
+                <img src="Images/ShadowsPack.webp" alt="Product Image">
+            </div>
+    
+            <div class="productDetails">
+                <h2 class="productName">Shadows of the Galaxy Booster Pack</h2>
+                <div class="productDescription">
+                    <p>Provides 16 Shadows of the Galaxy cards for play in your Star Wars Unlimited games. <span class="hide">All packs come included with:</span></p>
+                    <ul>
+                        <li>1 Leader</li>
+                        <li>1 Base</li>
+                        <li>9 Commons</li>
+                        <li>3 Uncommons</li>
+                        <li>1 Rare</li>
+                        <li>1 Foil</li>
+                    </ul>
+                </div>
+            </div>
+    
+            <div class="quantityControls">
+                <p class="productPrice">$9.99</p>
+                <div>
+                    <button onclick="decrement(5)">-</button>
+                    <input type="number" class="quantityInput" id="quantity-5" value="0" min="0">
+                    <button onclick="increment(5)">+</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="productRow" data-product-id="3">
+            <div class="productImage">
+                <img src="Images/Twilight_of_the_Republic_Booster_Box.webp" alt="Product Image">
+            </div>
+    
+            <div class="productDetails">
+                <h2 class="productName">Twilight of the Republic Booster Box</h2>
+                <p class="productDescription">Provides 24 Twilight of the Republic Booster Packs.</p>
+            </div>
+    
+            <div class="quantityControls">
+                <p class="productPrice">$99.99</p>
+                <div>
+                    <button onclick="decrement(3)">-</button>
+                    <input type="number" class="quantityInput" id="quantity-3" value="0" min="0">
+                    <button onclick="increment(3)">+</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="productRow" data-product-id="6">
+            <div class="productImage">
+                <img src="Images/TotRPacks.webp" alt="Product Image">
+            </div>
+    
+            <div class="productDetails">
+                <h2 class="productName">Twilight of the Republic Booster Pack</h2>
+                <div class="productDescription">
+                    <p>Provides 16 Twilight of the Republic cards for play in your Star Wars Unlimited games. <span class="hide">All packs come included with:</span></p>
+                    <ul>
+                        <li>1 Leader</li>
+                        <li>1 Base</li>
+                        <li>9 Commons</li>
+                        <li>3 Uncommons</li>
+                        <li>1 Rare</li>
+                        <li>1 Foil</li>
+                    </ul>
+                </div>
+            </div>
+    
+            <div class="quantityControls">
+                <p class="productPrice">$9.99</p>
+                <div>
+                    <button onclick="decrement(6)">-</button>
+                    <input type="number" class="quantityInput" id="quantity-6" value="0" min="0">
+                    <button onclick="increment(6)">+</button>
                 </div>
             </div>
         </div>
@@ -286,8 +402,8 @@
             productRows.forEach(row => {
                 const productId = row.getAttribute("data-product-id");
                 const productName = row.querySelector(".productName").innerText;
-                const productDescription = row.querySelector(".productDescription").innerText;
-                const productPrice = row.querySelector(".productPrice").innerText; // Get price
+                const productDescription = row.querySelector(".productDescription").innerHTML;
+                const productPrice = row.querySelector(".productPrice").innerText;
                 const quantity = row.querySelector(`#quantity-${productId}`).value;
                 const productImage = row.querySelector(".productImage").innerHTML;
     

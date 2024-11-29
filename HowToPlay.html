@@ -4,6 +4,7 @@
         <title>SWU Fan Site</title>
         <meta charset="utf-8">
         <link rel="stylesheet" href="Style.css">
+        <script src="common.js"></script>
     </head>
     <body>
         <a href="cart.html" class="shoplink">🛒</a>
@@ -28,7 +29,7 @@
                 <p>If you haven't played either <i>Magic the Gathering</i> or <i>HearthStone</i> or the like, than don't worry - I'll guide you through the basics. In the popular Constructed format, players build a pre-contrstucted deck of cards built around a base and a leader. I also like to bring red, green, and blue dice to help track damage, experience, and shields respectively. You may also wish to have a few copies of token units on hand in case you need them. For your first game, I would recommend that you would purchase one of the pre-built two-player starter decks. They come with decks that are ready to play right out of the gate and include cardboard tokens you can borrow. Starter decks also include cards that you won't find in card packs.</p>
                 <h2>Setup</h2>
                 <p>Start by randomly deciding who goes first. That player will be the player who holds something called the initive token. Place your leader and base in the center of the play area. Shuffle your deck and draw six cards. If your starting hand sucks, don't worry - you have the option to mulligan your hand. To mulligan, put your hand back in your deck and reshuffle it - drawing six new cards. Just be warned that you can only do this once, and it is entirely possible that you'll get a worse starting hand.</p>
-                <div style="display: flex; justify-content: center;"><img src="Images\SWH_Web_Diagram7_480f2f6c88.png" alt="Star Wars Unlimited Layout" style="width: 100%;height: auto; max-width: 400px;"></div>
+                <div style="display: flex; justify-content: center; background-image: url('Images/GridBackgroundTile.png'); border: 3px solid black"><img src="Images\SWH_Web_Diagram7_480f2f6c88.png" alt="Star Wars Unlimited Layout" style="width: 100%;height: auto; max-width: 400px;"></div>
                 <h2>Resources and Your First Two</h2>
                 <p>Now that you have six cards in hand, you will resource two cards from your hand "ready." To resource a card, place it face down at the bottom of your board. Cards that are resourced are permantly put out of play, but are used to form your mana pool. In other words, you are having to sacrifice cards so you can pay for other cards. There will be an oppertunity to resource more cards later.</p>
                 <h2>Action Phase</h2>
@@ -42,9 +43,12 @@
                 </ul>
                 <p>Once a player has completed an action, play passes to the next player. This continues until the end of the phase.</p>
                 <h2>Exhaustion and Readiness</h2>
-                <p>Typically, cards can only use their abilities once. To be able to mark a card's readiness for use, cards will either "exhausted" or "ready." In Magic, you may be familiar with the concept of "tapping." The concept is the same in Star Wars: Unlimited. A "ready" card is in an upright position while an "exhausted" card is rotated. All cards and resources (with few exceptions) enter play "exhausted" and typically need to wait until the next turn before you can use them.</p>
+                <p>Typically, cards can only use their abilities once. To be able to mark a card's readiness for use, cards will either be "exhausted" or "ready." In Magic, you may be familiar with the concept of "tapping." The concept is the same in Star Wars Unlimited. A "ready" card is in an upright position while an "exhausted" card is rotated. All cards and resources (in the event you play a resource out of regroup phase) enter play "exhausted" and typically need to wait until the next turn before you can use them.</p>
                 <h3>Play a Card</h3>
                 <p>To play a card, you must exhaust a number of ready resources equal to the number printed in the top left corner of the card. There are four types of cards:</p>
+                <div style="display: flex; justify-content: center; background-image: url('Images/GridBackgroundTile.png'); border: 3px solid black">
+                    <img src="Images/CardAnatomy.png" alt="" style="width: 100%;height: auto; max-width: 400px;">
+                </div>
                 <h4>Ground/Space Units</h4>
                 <p>Units form the backbone of your army. Units are capable of both attacking and defending. Units are divided between the space and the ground arenas. When you play a unit, place in its approiprate arena, exhausted.</p>
                 <h4>Events</h4>
@@ -59,9 +63,9 @@
                 <h4>Combat: Unit vs Base</h4>
                 <p>Should you choose to attack the enemy base with your unit, add a number of damage tokens equal to your unit's power to the enemy base.</p>
                 <h3>Using an Action Ability</h3>
-                <p>If a unit or leader has the ability "Action ([cost]): [Ability]," you may spend your action to activate the effects of that unit/leader's ability. Note: If an acton specifies tapping the unit as a cost of that ability that card must be ready so you can pay the cost of exhausting that card.</p>
+                <p>If a unit or leader has the ability "Action ([cost]): [Ability]," you may spend your action to activate the effects of that unit/leader's ability. Epic Actions are similar to normal actions, but they can only be used once per game. Note: If an acton specifies tapping the unit/leader as a cost of that ability, that card must be ready so you can pay the cost of exhausting that card.</p>
                 <h2>Ending a Round and Initive</h2>
-                <p>Any player has the option to take the initive that round. Once the initive is claimed, no other player may claim it. Taking the initive grants that player the advantage of going first the next round, but comes at the drawback of prematurely ending their action phase. By taking the initive, that player is declaring that they are automatically passing for the rest of the round. The phase will then end once all players consecutively pass. Alternatively, if no player does claim the initive, than play ends with the current initive holder going first next round. Another bit of tech worth noting is that if a player were to pass, than the other is given the oppertunity to take the initive, which also counts as passing for that round, making it possible to prematurely end the phase right there in a two player game.</p>
+                <p>Any player has the option to take the initive that round. Once the initive is claimed, no other player may claim it. Taking the initive grants that player the advantage of going first the next round, but comes at the drawback of prematurely ending their action phase. By taking the initive, that player is declaring that they are automatically passing for the rest of the round. The phase will then end once all players consecutively pass. Notably, if no player does claim the initive, than play ends with the current initive holder going first next round. Another bit of tech worth noting is that if a player were to pass, than the other is given the oppertunity to take the initive, which also counts as passing for that round, making it possible to prematurely end the phase right there in a two player game.</p>
                 <h2>Regroup Phase</h2>
                 <p>The end of every round is always marked by a regroup phase. During regroup, you will perform the following actions in order:</p>
                     <ol>
@@ -69,9 +73,22 @@
                         <li>Resource up to one card</li>
                         <li>Ready everything on your board</li>
                     </ol>
+                <h2>Leaders</h2>
+                <p>Leaders provide some kind of passive or active ability to help you push through the game. More importantly, however, all leaders have an epic action that allows them to deploy onto the battlefield. Leaders are typically tough units to remove with high amounts of HP and several effects not being able to effect them. Additionally, leaders on the battlefield have typically have better or altered abilities.</p>
+                <h2>Epic Actions</h2>
+                <p>Epic Actions (found on leaders and bases) can only be used once per game, so careful consideration is required to know when to use them.</p>
                 <h2>Ending the Game</h2>
-                <p>Your objective will be to eliminate all opponents by dealing damage to your opponent's base while defending your own. Once the opponent's base has damage on it equal to its health (usually 30HP), than it will be game over for them. Victory will require you to build an army powerful enough to break through the enemy's defenses (unless you're one of those special Thrawn or Vader decks, but that's a tale for another time).</p>    
+                <p>Your objective will be to eliminate all opponents by dealing damage to your opponent's base while defending your own. Once the opponent's base has damage on it equal to its health (usually 30HP), than it will be game over for them. Victory will require you to build an army powerful enough to break through the enemy's defenses (unless you're one of those special Thrawn or Vader decks, but that's a tale for another time).</p>
+                <h2>Tokens</h2>
+                <p>Tokens are imaginary units/upgrades that enter the game regardless of the cards you have. There are currently four tokens available in the game: <a href="https://starwarsunlimited.com/cards?cid=2007868442#information" class="card"><img src="Cards/Experience.webp">experience</a>, <a href="https://starwarsunlimited.com/cards?cid=3358002015#information" class="card"><img src="Cards/Shield.webp" alt="">shields</a>, <a href="https://starwarsunlimited.com/cards?cid=3463348370#information" class="card"><img src="Cards/BattleDroid.webp" alt="">battle droids</a>, and <a href="https://starwarsunlimited.com/cards?cid=3941784506#information" class="card"><img src="Cards/CloneTrooper.webp" alt="">clone troopers</a>. Anytime tokens would leave the battlefield, they simply disappear.</p>    
             </div>
+        </div>
+
+        <div class="footer">
+            <p>All content used under Fair Use act of 1976</p>
+            <p>Website is not associated with Fantasy Flight Games, Lucasfilm, or Disney</p>
+            <p>Website is used for demenstration and learning purposes only</p>
+            <p><a href="resource.html">Click here for citations</a></p>
         </div>
     </body>
 </html>

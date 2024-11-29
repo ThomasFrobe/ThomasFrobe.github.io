@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hover Cards in Paragraph</title>
+  <style>
+    /* styles.css */
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background-color: #1e1e1e;
+  color: white;
+  margin: 20px;
+}
+
+.hover-card {
+  position: relative;
+  color: #ffcc00; /* Highlighted text color */
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.hover-card:hover {
+  text-decoration: none;
+}
+
+.card-detail {
+  display: none;
+  position: absolute;
+  top: 100%; /* Below the hovered word */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  padding: 10px;
+  background-color: #222;
+  border: 1px solid #444;
+  border-radius: 5px;
+  z-index: 1000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.hover-card:hover .card-detail {
+  display: block;
+}
+
+.card-detail img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+.card-detail p {
+  font-size: 12px;
+  line-height: 1.4;
+  color: #ccc;
+  margin: 0;
+}
+
+  </style>
+</head>
+<body>
+  <p>
+    In this game, you can play as 
+    <span class="hover-card" data-card="card1">
+      Darth Vader
+      <div class="card-detail">
+        <img src="Aspects/Aggression.png" alt="Darth Vader" />
+        <p>A powerful Sith Lord with immense strength and dark powers.</p>
+      </div>
+    </span>
+    or 
+    <span class="hover-card" data-card="card2">
+      Luke Skywalker
+      <div class="card-detail">
+        <img src="Aspects/Vigilance.png" alt="Luke Skywalker" />
+        <p>A Jedi hero fighting to restore peace in the galaxy.</p>
+      </div>
+    </span>.
+  </p>
+
+  <script>
+  </script>
+</body>
+</html>

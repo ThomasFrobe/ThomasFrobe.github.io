@@ -5,6 +5,7 @@
         <meta charset="utf-8">
         <link rel="stylesheet" href="Style.css">
         <link rel="icon" type="image/x-icon" href="Aspects\SWU Aspects.png">
+        <script src="common.js"></script>
     </head>
     <body>
         <a href="ShoppingForm.html" class="shoplink">🛒</a>
@@ -17,40 +18,58 @@
             <a href="DeckBuilding.html">DeckBuilding</a>
             <a href="WhyILike.html">Why I Like SWU</a>
             <a href="UsefulResources.html">Useful Resources</a>
+            <a href="ShoppingForm.html">Products for Sale</a>
         </div>
 
-            <h1>Abilities</h1>
-            <p>Abilities are modifications to units that inhertantly add more diversity and uses to your troops. Here's a list of some of the most common abilities you will see:</p>
-            <h2>When Played: [Ability]</h2>
-            <p>This ability activates when this card is played. It is worth noting that you get to choose the order When Played effects come into effect.</p>
-            <h2>On Attack: [Ability]</h2>
-            <p></p>
-            <h2>When this unit completes an attack:</h2>
-            <h2>Keyword Abilities</h2>
-            <h2><span class="key">Ambush</span></h2>
-            <p>Ambush gives your unit the following ability: "When played: you may ready this unit and have it attack an enemy unit"
-            <h2><span class="key">Grit</span></h2>
-            <p>Grit gives the unit +1/+0 for every damage counter on it</p>
-            <h2><span class="key">Shielded</span></h2>
-            <p>A Shielded unit comes into play with a shield.</p>
-            <h2><span class="key">Sentinal</span></h2>
-            <p>Sentinal units are special in that they must be dealt with before non-sentinal units and bases.</p>
-            <h2><span class="key">Sabetour</span></h2>
-            <p>A unit with sabetour is free to ignore the restrctions imposed by sentinals. Additionally, sabetours have an on attack trigger to defeat all shields on a unit.</p>
-            <h2><span class="key">Raid X</span></h2>
-            <p>Raid gives your unit the ability "On attack: This unit gains +x/+0 for this attack"</p>
-            <h2><span class="key">Restore X</span></h2>
-            <p>Restore gives your unit the ability "On attack: remove X damage counters from your base"</p>
-            <h2><span class="key">Overwelm</span></h2>
-            <p>Overwelm gives your unit the ability "On attack: deal any remaining damage from the attack to the defender's base"</p>
-            <h2><span class="key">Bounty - [Effect]</span></h2>
-            <p>Bounty gives a unit the ability "When defeated, give the opponent who claimed this bounty the attached bonus"</p>
-            <h2><span class="key">Smuggle (Cost)</span></h2>
-            <p>Smuggle allows you to play a card for its smuggle cost from your resource pile. When a card is smuggled out, replace it with the top card of your deck. Smuggling is generally more expensive to play, but at least has the flexibility to be played when you want.</p>
-            <h2><span class="key">Coordinate - [Ability]</span></h2>
-            <p>Coordinate is an ability that grants another ability that works only when you control three or more units on the battlefield. It's worth noting that both leader units and token units count towards this requirement.</p>
-            <h2><span class="key">Exploit X</span></h2>
-            <p>Exploit is an ability that grants the following ability "When being played: you may sacrifice up to X units. For every unit sacrificed this way, reduce the cost of this card by two. It's worth noting that token units (like the Battle Droids unit) can count towards this requirement.</p>
+        <div class="mainContent">
+            <div>
+                <h1>Abilities</h1>
+                <p>Abilities are modifications to units that inhertantly add more diversity and uses to your troops. Here's a list of some of the most common abilities you will see:</p>
+                <h2>When Played: [Ability]</h2>
+                <p>This ability activates when this card is played. It is worth noting that you get to choose the order When Played effects come into effect. For example, you could use <a class="card" href="https://starwarsunlimited.com/cards?cid=8327910265#information"><img src="Cards/ECL.webp" alt="">Energy Conversion Lab</a> to play <a class="card" href="https://starwarsunlimited.com/cards?cid=4300219753#information"><img src="Cards/FettFirespray.webp" alt="">Fett's Firespray</a> and when you do, you can activate the <span class="key">Ambush</span> effect to attack with the unit then activate the <b>When Played</b> effect to ready it.</p>
+                <h2>On Attack: [Ability]</h2>
+                <p>This ability activates when this unit attacks. It's worth noting that <b>On Attack</b> triggers <i>before</i> dealing damage. This means that something you could do something like attack a unit with two HP remaining with a unit equiped with a <a href="https://starwarsunlimited.com/cards?cid=8495694166#information" class="card"><img src="Cards/jedilightsaber.webp" alt="">Jedi Lightsaber</a> and eliminate them before dealing damage, thus making your unit take no damage.</p>
+                <h2>When This Unit Completes an Attack: [Ability]</h2>
+                <p>This ability activates after this unit attacks and survives.</p>
+                <h2>Keyword Abilities</h2>
+                <h2><span class="key">Ambush</span></h2>
+                <p><span class="key">Ambush</span> lets your unit attack another unit on being played. This can be used to gain value off your unit by making it swing into a less valuable unit on the enemy side, reducing the enemy's ranks and bolstering your own at the same time.</p>
+                <h2><span class="key">Grit</span></h2>
+                <p><span class="key">Grit</span> gives the unit +1/+0 for every damage counter on it, making it more dangerous the more damaged it is.</p>
+                <h2><span class="key">Shielded</span></h2>
+                <p>A <span class="key">Shielded</span> unit comes into play with a <a href="https://starwarsunlimited.com/cards?cid=3358002015#information" class="card"><img src="Cards/Shield.webp" alt="">shield</a> token.</p>
+                <h2><span class="key">Sentinal</span></h2>
+                <p><span class="key">Sentinal</span> units are special in that they must be removed before dealing with non-sentinal units and bases.</p>
+                <h2><span class="key">Sabetour</span></h2>
+                <p>A unit with <span class="key">sabetour</span> is free to ignore the restrctions imposed by <span class="key">sentinal</span> units. Additionally, units with <span class="key">sabetour</span> have an on attack trigger to defeat all shields on the defender.</p>
+                <h2><span class="key">Raid X</span></h2>
+                <p><span class="key">Raid</span> makes your unit deal X extra damage whenever they attack.</p>
+                <h2><span class="key">Restore X</span></h2>
+                <p><span class="key">Restore</span> makes it so that anytime your unit would attack, it would heal X damage from your base.</p>
+                <h2><span class="key">Overwelm</span></h2>
+                <p><span class="key">Overwelm</span> makes it so that any extra damage leftover from this unit's attack goes to the enemy base.</p>
+                <h2><span class="key">Bounty - [Effect]</span></h2>
+                <p>When a unit with a <span class="key">Bounty</span> is defeated or captured, the opponent who caused the removal has the choice to claim the bounty. While most instances you see</p>
+                <h2>Capture</h2>
+                <p>Certain cards allow you to capture an enemy card with your own. To capture a card, take it out of play and put it under the capturing unit. When a card is captured, all upgrades and damage are removed from it. Any bounties on that unit are resolved. When the captured unit is rescued (either by removing the capturing unit from play or some other method), it is returned to its owner's control, exhausted.</p>
+                <h2><span class="key">Smuggle (Cost)</span></h2>
+                <p>When you resource a card with <span class="key">Smuggle</span> it isn't necessarily out of play. A card with <span class="key">Smuggle</span> can be played for its smuggle cost out of the resource pile. When a card is smuggled out, replace it with the top card of your deck. Smuggling is generally more expensive to play, but at least has the flexibility to be played when you want.</p>
+                <h2><span class="key">Coordinate - [Ability]</span></h2>
+                <p><span class="key">Coordinate</span> is an ability that grants another ability that works only when you control three or more units on the battlefield (including itself). It's worth noting that both leader units and token units count towards this requirement.</p>
+                <h2><span class="key">Exploit X</span></h2>
+                <p>A unit with <span class="key">Exploit</span> gains an alternate cost of sacrificing up to X number of units to reduce the cost by <span class="resource">2</span> each. While it is a fantastic way to get to more expensive cards quicker, those cards tend to be more expensive than they actually are.</p>
+            </div>
+        </div>
+        
+        <script>
+
+        </script>
+
+        <div class="footer">
+            <p>All content used under Fair Use act of 1976</p>
+            <p>Website is not associated with Fantasy Flight Games, Lucasfilm, or Disney</p>
+            <p>Website is used for demenstration and learning purposes only</p>
+            <p><a href="resource.html">Click here for citations</a></p>
         </div>
     </body>
 </html>

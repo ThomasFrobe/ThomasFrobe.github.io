@@ -91,7 +91,8 @@
             border: 30px wheat;
             border-radius: 15px;
             padding: 15px;
-            width: 95%
+            width: 95%;
+            margin: auto;
         }
 
         .checkoutForm > div {
@@ -109,6 +110,28 @@
         .informationForm a {
             color: blue;
         }
+
+        .hide, .productDetails ul {
+            display: none;
+        }
+
+        #shippingProgress {
+            width: 50%;
+            background-color: #ddd;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+
+        #shippingProgressBar {
+            width: 0%;
+            height: 20px;
+            background-color: #27ae60;
+            border-radius: 5px;
+            text-align: center;
+            line-height: 20px;
+            color: white;
+            font-weight: bold;
+        }
     </style>
 </head>
 
@@ -123,6 +146,7 @@
         <a href="DeckBuilding.html">DeckBuilding</a>
         <a href="WhyILike.html">Why I Like SWU</a>
         <a href="UsefulResources.html">Useful Resources</a>
+        <a href="ShoppingForm.html">Products for Sale</a>
     </div>
     
     <h1>Your Cart</h1>
@@ -205,6 +229,12 @@
             <div style="justify-content: flex-end;">
                 <label for="Standard"><b>Standard - $6.00</b></label>
                 <input type="radio" id="Standard" name="Shipping" required checked><br>
+            </div>
+            <div>
+                <p id="progressText">Add $0.00 more to get free shipping!</p>
+                <div id="shippingProgress">
+                    <div id="shippingProgressBar">0%</div>
+                </div>
             </div>
             <div style="justify-content: flex-end;">
                 <label for="Fast"><b>Fast - $9.99</b></label>
@@ -402,6 +432,8 @@
         function updateCartSummary() {
             const cartItems = getCartItems(); // Retrieve cart items from localStorage
             let subtotal = 0;
+            const freeShippingThreshold = 150;
+            const standardShippingCost = 6.00; // Standard shipping cost
 
             // Calculate the subtotal
             cartItems.forEach((item) => {
@@ -409,16 +441,20 @@
                 subtotal += price * item.quantity; // Add the item's total cost to the subtotal
             });
 
+            // Check if subtotal qualifies for free shipping
+            let shippingCost = subtotal >= freeShippingThreshold ? 0 : standardShippingCost;
+
             // Define the tax rate (e.g., 10%)
             const taxRate = 10; // 10%
             const tax = subtotal * (taxRate / 100);
-            const shippingCost = getShippingCost(); // Get the selected shipping cost
             const total = subtotal + tax + shippingCost;
 
             // Update the subtotal, tax, shipping, and total in the UI
             const subtotalElement = document.getElementById("cartSubtotal");
             const taxElement = document.getElementById("tax");
             const totalElement = document.getElementById("cartTotal");
+            const progressBar = document.getElementById("shippingProgressBar");
+            const progressText = document.getElementById("progressText");
 
             if (subtotalElement) {
                 subtotalElement.innerHTML = `<b>Subtotal:</b> $${subtotal.toFixed(2)}`;
@@ -428,6 +464,31 @@
             }
             if (totalElement) {
                 totalElement.innerHTML = `<b>Total:</b> $${total.toFixed(2)}`;
+            }
+
+            // Update progress bar for free shipping
+            if (progressBar && progressText) {
+                if (subtotal >= freeShippingThreshold) {
+                    progressBar.style.width = "100%";
+                    progressBar.textContent = "Free Shipping!";
+                    progressText.textContent = "Congratulations! You qualify for free shipping.";
+                } else {
+                    const progress = (subtotal / freeShippingThreshold) * 100;
+                    const remaining = freeShippingThreshold - subtotal;
+                    progressBar.style.width = `${progress}%`;
+                    progressBar.textContent = `${Math.min(progress, 100).toFixed(0)}%`;
+                    progressText.textContent = `Add $${remaining.toFixed(0)} more to get free shipping!`;
+                }
+            }
+
+            // Update shipping cost display dynamically
+            const shippingOptions = document.querySelectorAll('input[name="Shipping"]');
+            if (shippingOptions) {
+                shippingOptions.forEach((option) => {
+                    if (option.id === "Standard") {
+                        option.nextElementSibling.innerHTML = `<b>Standard - ${shippingCost === 0 ? "Free" : `$${shippingCost.toFixed(2)}`}</b>`;
+                    }
+                });
             }
         }
 

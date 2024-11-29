@@ -5,6 +5,39 @@
         <meta charset="utf-8">
         <link rel="stylesheet" href="Style.css">
         <link rel="icon" type="image/x-icon" href="Aspects\SWU Aspects.png">
+        <script src="common.js"></script>
+        <style>
+            .contentBlock {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                gap: 10px;
+                height: auto;
+                align-items: stretch;
+                margin-right: 0px;
+            }
+
+            .contentBlock > div {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                /* flex: 0 1 50%; */
+                justify-content: flex-end;
+            }
+
+            .contentBlock > div > img {
+                width: 100%; 
+                object-fit: cover;
+                max-width: 400px;
+            }
+
+            .contentBlock > div:first-child {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                flex: 1.25;
+            }
+        </style>
     </head>
     <body>
         <a href="ShoppingForm.html" class="shoplink">🛒</a>
@@ -17,6 +50,94 @@
             <a href="DeckBuilding.html">DeckBuilding</a>
             <a href="WhyILike.html">Why I Like SWU</a>
             <a href="UsefulResources.html">Useful Resources</a>
+            <a href="ShoppingForm.html">Products for Sale</a>
+        </div>
+
+        <div class="mainContent">
+            <div>
+                <h1>DeckBuilding</h1>
+                <p>Deckbuilding is one of the most important parts of Star Wars Unlimited.</p>
+                <h2>Deckbuilding Rules</h2>
+                <p>To make a premier deck (the primary game mode), you need to combine a minimum of 50 cards together with no more than three <i>copies</i> of any given card. Additionally, you may bring a sideboard of no more than 10 cards. Between rounds, you are allowed to swap cards between the main and side boards so long as you follow the minimum 50/maximum 10 rules.</p>
+                <h3>Copies Rule</h3>
+                <p>A copy of a card is a card that shares that shares the same name and properties as another. This means that the <a href="https://starwarsunlimited.com/cards?cid=3038397952#information" class="card"><img src="Cards/ConvensionKylo.webp" alt="">convention exclusive Kylo Ren</a> is a copy of <a href="https://starwarsunlimited.com/cards?cid=6263178121#information" class="card"><img src="Cards/Kylo.webp" alt="">normal Kylo Ren</a> because they both share the same stats, abilities, and name even if they do look different. However, <a href="https://starwarsunlimited.com/cards?cid=8862896760#informationhttps://starwarsunlimited.com/cards?cid=8862896760#information" class="card"><img src="Cards/Maul.webp" alt="">Set 2 Maul</a> and <a href="https://starwarsunlimited.com/cards?cid=8613680163#information" class="card"><img src="Cards/Maul3.webp" alt="">Set 3 Maul</a> are completely different and therefore are not considered "copies" of each other.</p>
+                <h2>Packs</h2>
+                <p>Like all TCGs, Star Wars Unlimited features boxes and packs to open. All display boxes come with 24 packs of 16 cards. At minimum, you will find:</p>
+                <ul>
+                    <li>1 leader</li>
+                    <li>1 base</li>
+                    <li>9 commons</li>
+                    <li>3 uncommons</li>
+                    <li>1 rare</li>
+                    <li>1 foil of any rarity</li>
+                </ul>
+                <p>Additionally, cards have a certain chance of being a borderless, hyperspace card.</p>
+                <h3>Set 1: Sparks of Rebellion</h3>
+                <div class="contentBlock">
+                    <div>
+                        <p>The very first set of the game opens up by focusing on the era that started it all: the era of the Galatic Civil War. This set introduces a very well-rounded set with leaders that represent their aspects well. This set also has smaller themes focusing on:</p>
+                        <ul>
+                            <li>Rebels</li>
+                            <li>Inferno Squad</li>
+                            <li>Rogue One</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <img src="Images/SparkofRebelliondisplay_800x.webp" alt="">
+                    </div>
+                </div>
+                <h3>Set 2: Shadows of the Galaxy</h3>
+                <div class="contentBlock">
+                    <div>
+                        <p>The sequel to Sparks of Rebellion focuses on the underworld of Star Wars and on the era following the Civil War: The Mandaloreon Era. Naturally, there's also a lot of focus on Mandaloreons (particularly in the Vigilance/Aggression aspects). With the focus on the Underworld, we are naturally introduced to <span class="key">Bounty</span>, <span class="key">Smuggle</span>, and capture mechanics. This set noticably favors Aggression/Heroism decks with cards like <a href="https://starwarsunlimited.com/cards?cid=5966087637#information" class="card"><img src="Cards/Poe.webp" alt="">Poe Dameron</a>, <a href="https://starwarsunlimited.com/cards?cid=2470093702#information" class="card"><img src="Cards/Wrecker.webp" alt="">Wrecker</a>, and <a href="https://starwarsunlimited.com/cards?cid=4935319539#information" class="card"><img src="Cards/KraytDragon.webp" alt="">Krayt Dragon</a> being introduced</p>
+                        <ul>
+                            <li>Solo</li>
+                            <li>Bad Batch</li>
+                            <li>The Book of Boba Fett</li>
+                            <li>The Era of Resistance</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <img src="Images/ShadowsBooster.webp" alt="">
+                    </div>
+                </div>
+                <h3>Set 3: Twilight of the Republic</h3>
+                <div class="contentBlock">
+                    <div>
+                        <p>The third set and final set for 2024 is another core set, this time focusing on the era of the Clone Wars. This set is also the first set to introduce us to token units, who are capable of infinitely spawning into the game. This set also tends to favor Cunning/Villainy decks with cards like <a href="https://starwarsunlimited.com/cards?cid=6849037019#information" class="card"><img src="Cards/NowTwoThem.webp" alt="">Now There Are Two Of Them</a> and <a href="https://starwarsunlimited.com/cards?cid=0693815329#information" class="card"><img src="Cards/CadBane.webp" alt="">Cad Bane</a>. Additionally, this set also features our first heroism/villainy and non-deployable leader, <a href="https://starwarsunlimited.com/cards?cid=0026166404#information" class="card"><img src="Cards/ChancellorPalp.webp" alt=""><img src="Cards/DarthSidious.webp" alt="">Chancellor Palpatine/Darth Sidous</a>.</p>
+                    </div>
+                    <div>
+                        <img src="Images/Twilight_of_the_Republic_Booster_Box.webp" alt="">
+                    </div>    
+                </div>
+                <h2>A Very Special Leader</h2>
+                <div class="contentBlock">
+                    <div>
+                        <p>Recently, it's come out that the <a href="https://starwarsunlimited.com/cards?cid=4626028465#information" class="card"><img src="Cards/BobaFett.webp">Boba Fett</a> leader got banned after two sets of dominating in competitive formats. No longer will he be allowed to dominate premier formats. You can <a href="https://starwarsunlimited.com/articles/a-leader-suspended">read here</a> for more information.</p>
+                    </div>
+                    <div>
+                        <img src="Cards/BobaFett.webp" alt="">
+                    </div>
+                </div>
+                <h2>Common Deck Types</h2>
+                <h3>Aggro</h3>
+                <p>Aggro decks tend to want to move fast. One of the most popular aggro decks is <a href="https://starwarsunlimited.com/cards?cid=8327910265#information" class="card"><img src="Cards/ECL.webp" alt=""> Conversion Lab (ECL)</a> <a href="https://starwarsunlimited.com/cards?cid=4841169874#information" class="card"><img src="Cards/Sabine.webp" alt="">Sabine Wren</a>, who deploys quickly and uses ECL to ECL out heavy cards like <a href="https://starwarsunlimited.com/cards?cid=2470093702#information" class="card"><img src="Cards/Wrecker.webp" alt="">Wrecker</a> and <a href="https://starwarsunlimited.com/cards?cid=5966087637#information" class="card"><img src="Cards/Poe.webp" alt="">Poe Dameron</a>.</p>
+                <h3>Midrange</h3>
+                <p>Midrange decks are pretty average decks that deploy heavier units than aggro while being faster than long-range control decks.</p>
+                <h3>Control</h3>
+                <p>Control decks want to maintain control of the board. Control decks typically win by stalling the opponent until they run out of big plays. Then, the control deck player finishes off their opponent with their own huge plays. Control decks will typically use <a href="https://starwarsunlimited.com/cards?cid=8615772965#information" class="card"><img src="Cards/Vigilance.webp" alt="">Vigilance (the card)</a> to mill (or discard cards from) the opponent's deck. One of my favorite examples of a good control deck is <a class="card" href="https://starwarsunlimited.com/cards?cid=4352150438#information"><img src="Cards/Rey.webp" alt="">Vigilance Rey</a> who uses her <span class="key">Restore 3</span> to spam healing into her base while buffing weaker units.</p>
+                <h3>Tempo</h3>
+                <p>Tempo decks are decks that want to out-value their opponent's plays. They typically do so by returning enemy units back to hand or playing higher value units for shorter term gain. Good examples of this are leaders like <a href="https://starwarsunlimited.com/cards?cid=5954056864#information" class="card"><img src="Cards/Han.webp">Han Solo</a> and <a href="https://starwarsunlimited.com/cards?cid=9226435975#information" class="card"><img src="Cards/YoungHan.webp">Young Han</a></p>
+                <h3>Ramp</h3>
+                <p style="margin-bottom: 0;">Ramp Decks typically want to play cards like <a href="https://starwarsunlimited.com/cards?cid=2703877689#information" class="card"><img src="Cards/Resupply.webp">Resupply</a>. The goal of ramp decks are to get to expensive cards as quickly as possible.</p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>All content used under Fair Use act of 1976</p>
+            <p>Website is not associated with Fantasy Flight Games, Lucasfilm, or Disney</p>
+            <p>Website is used for demenstration and learning purposes only</p>
+            <p><a href="resource.html">Click here for citations</a></p>
         </div>
     </body>
 </html>
