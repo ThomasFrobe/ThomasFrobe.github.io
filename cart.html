@@ -132,6 +132,10 @@
             color: white;
             font-weight: bold;
         }
+
+        #stdShippingCost.strikethrough {
+            text-decoration: line-through;
+        }
     </style>
 </head>
 
@@ -227,8 +231,8 @@
 
             <h2>Shipping</h2>
             <div style="justify-content: flex-end;">
-                <label for="Standard"><b>Standard - $6.00</b></label>
-                <input type="radio" id="Standard" name="Shipping" required checked><br>
+                <label for="Standard"><b>Standard</b> - <span id="stdShippingCost">$6.00</span></label>
+                <input type="radio" id="Standard" name="Shipping" price="6.00" required checked><br>
             </div>
             <div>
                 <p id="progressText">Add $0.00 more to get free shipping!</p>
@@ -237,8 +241,8 @@
                 </div>
             </div>
             <div style="justify-content: flex-end;">
-                <label for="Fast"><b>Fast - $9.99</b></label>
-                <input type="radio" id="Fast" name="Shipping" required>
+                <label for="Fast"><b>Fast</b> - $9.99</label>
+                <input type="radio" id="Fast" name="Shipping" price="9.99" required>
             </div>
 
             <p style="text-align: end;" id="cartTotal">Total: $0.00</p>
@@ -442,7 +446,7 @@
             });
 
             // Check if subtotal qualifies for free shipping
-            let shippingCost = subtotal >= freeShippingThreshold ? 0 : standardShippingCost;
+            let shippingCost = document.getElementById("Standard").checked ? (subtotal >= freeShippingThreshold ? 0 : standardShippingCost) : getShippingCost();
 
             // Define the tax rate (e.g., 10%)
             const taxRate = 10; // 10%
@@ -472,12 +476,14 @@
                     progressBar.style.width = "100%";
                     progressBar.textContent = "Free Shipping!";
                     progressText.textContent = "Congratulations! You qualify for free shipping.";
+                    document.getElementById("stdShippingCost").classList.add("strikethrough");
                 } else {
                     const progress = (subtotal / freeShippingThreshold) * 100;
                     const remaining = freeShippingThreshold - subtotal;
                     progressBar.style.width = `${progress}%`;
                     progressBar.textContent = `${Math.min(progress, 100).toFixed(0)}%`;
                     progressText.textContent = `Add $${remaining.toFixed(0)} more to get free shipping!`;
+                    document.getElementById("stdShippingCost").classList.remove("strikethrough");
                 }
             }
 
