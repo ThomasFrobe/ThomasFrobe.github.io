@@ -168,7 +168,7 @@
         <div class="cartContent" id="cartContent"></div>
     </div>
 
-    <div class="informationForm">
+    <div class="informationForm" id = "form">
         <h1>Checkout</h1>
     
         <form id="checkoutForm" class="checkoutForm">
@@ -275,7 +275,7 @@
     <script>
         // Get saved cart items from localStorage
         function getCartItems() {
-            console.log("Getting Items")
+            //console.log("Getting Items")
             return JSON.parse(localStorage.getItem('cartItems')) || [];
             //console.log('Retrieved cart items:', items);
             return items;   
@@ -412,10 +412,11 @@
                 if (newQuantity === 0) {
                     cartItems.splice(index, 1);
                     localStorage.setItem('cartItems', JSON.stringify(cartItems));
-                    document.querySelector(`#cartContent .cartItem[data-product-id="${index}"]`).remove();
+                    document.querySelector(`#cartContent .cartItem[data-product-id="${id}"]`).remove();
     
                     if (cartItems.length === 0) {
-                        document.getElementById('cartContent').innerHTML = "<p>Your cart is empty.</p>";
+                        document.getElementById('cartContent').innerHTML = "<p style='text-align: center'>Your cart is empty.</p>";
+                        document.getElementById("form").classList.add("hide")
                     }
                 }
             }
@@ -447,7 +448,8 @@
 
                     // If the cart is empty, show the empty message
                     if (cartItems.length === 0) {
-                        document.getElementById('cartContent').innerHTML = "<p>Your cart is empty.</p>";
+                        document.getElementById('cartContent').innerHTML = "<p style='text-align: center'>Your cart is empty.</p>";
+                        document.getElementById("form").classList.add("hide")
                     }
                 }
             }
@@ -602,7 +604,8 @@
                 //     });
                 // });
             } else {
-                cartContent.innerHTML = "<p>Your cart is empty.</p>";
+                cartContent.innerHTML = "<p style='text-align: center'>Your cart is empty.</p>";
+                document.getElementById("form").classList.add("hide")
             }
             UpdateCartDisplay(totalQuantity)
         }
