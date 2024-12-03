@@ -35,16 +35,38 @@ h1 > a > img, h1 > img {
 }
 
 .shoplink {
-    position: absolute;
-    right: 5px;
+    position: fixed;
+    right: 8px;
     text-decoration: none;
     font-size: 24px;
     background-color: green;
     border-radius: 50%;
 }
 
+.shoplink.stuff {
+    background-color: rgb(34, 247, 34);
+}
+
 .shoplink:hover {
     background-color: lightgreen;
+    cursor: pointer;
+}
+
+.cartCountCircle {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9em;
+    font-weight: bold;
+    z-index: 10;
 }
 
 .nav {

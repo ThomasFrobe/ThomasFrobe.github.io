@@ -354,6 +354,7 @@
         function increment(productId) {
             let quantityInput = document.getElementById(`quantity-${productId}`);
             quantityInput.value = parseInt(quantityInput.value) + 1;
+            UpdateCartNum()
         }
     
         function decrement(productId) {
@@ -361,6 +362,7 @@
             if (quantityInput.value > 0) {
                 quantityInput.value = parseInt(quantityInput.value) - 1;
             }
+            UpdateCartNum()
         }
     
         // Function to gather all products data and store them in localStorage
@@ -425,6 +427,66 @@
             // Redirect to the cart page
             window.location.href = url;
         }
+
+        function UpdateCartNum() {
+            let productNum = 0;
+            const productRows = document.querySelectorAll(".productRow");
+            productRows.forEach(row => {
+                const productId = row.getAttribute("data-product-id");
+                const quantity = parseInt(row.querySelector(`#quantity-${productId}`).value);
+    
+                if (quantity > 0) { // Only add if quantity is greater than 0
+                    productNum += quantity;
+                }
+            });
+            UpdateCartDisplay(productNum)
+        }
+
+        function UpdateCartDisplay(num) {
+            // Get or create the red circle for the cart count
+            let cartIcon = document.querySelector(".shoplink");
+            if (!cartIcon) return;
+
+            let countCircle = document.querySelector(".cartCountCircle");
+            if (!countCircle) {
+                countCircle = document.createElement("div");
+                countCircle.classList.add("cartCountCircle");
+                cartIcon.appendChild(countCircle);
+            }
+
+            // Update the count or hide it if zero
+            if (num > 0) {
+                countCircle.innerText = num;
+                countCircle.style.display = "flex";
+                cartIcon.classList.add("stuff")
+            } else {
+                countCircle.style.display = "none";
+                cartIcon.classList.remove("stuff")
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+            let totalQuantity = 0;
+
+            cartItems.forEach(item => {
+                // Locate the quantity input for the product by its ID
+                const quantityInput = document.getElementById(`quantity-${item.id}`);
+                if (quantityInput) {
+                    quantityInput.value = item.quantity;
+                }
+                totalQuantity += item.quantity;
+            });
+            
+            UpdateCartDisplay(totalQuantity);
+
+            const quantityInputs = document.querySelectorAll(".quantityInput");
+            quantityInputs.forEach(input => {
+                input.addEventListener("input", function () {
+                    UpdateCartNum(); // Recalculate the cart total
+                });
+            });
+        });
     </script>
 </body>
 </html>

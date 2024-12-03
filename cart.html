@@ -8,6 +8,15 @@
     <title>Shop SWU Supplies</title>
 
     <style>
+        .content {
+            margin-top: 0px;
+            background-color: #3E3E3E;
+        }
+
+        .content > h1 {
+            margin: 0px;
+        }
+
         .cartContent {
             display: flex;
             flex-direction: column;
@@ -54,6 +63,7 @@
             display: flex;
             flex-direction: row;
             align-items: center;
+            align-content: center;
         }
 
         .cartItem button {
@@ -153,8 +163,10 @@
         <a href="ShoppingForm.html">Products for Sale</a>
     </nav>
     
-    <h1>Your Cart</h1>
-    <div class="cartContent" id="cartContent"></div>
+    <div class="content">
+        <h1>Your Cart</h1>
+        <div class="cartContent" id="cartContent"></div>
+    </div>
 
     <div class="informationForm">
         <h1>Checkout</h1>
@@ -359,7 +371,9 @@
         function increment(index) {
             const cartItems = getCartItems();
             const quantityInput = document.getElementById(`quantity-${index}`);
+            //const cartItemDiv = document.querySelector(`.cartItem[data-product-id="${index}"]`);
             const newQuantity = parseInt(quantityInput.value) + 1;
+            
             quantityInput.value = newQuantity;
             cartItems[index].quantity = newQuantity;
             localStorage.setItem('cartItems', JSON.stringify(cartItems));
@@ -369,6 +383,7 @@
         function decrement(index) {
             const cartItems = getCartItems();
             const quantityInput = document.getElementById(`quantity-${index}`);
+            const cartItemDiv = document.querySelector(`.cartItem[data-product-id="${index}"]`);
             let newQuantity = parseInt(quantityInput.value) - 1;
             if (newQuantity >= 0) {
                 quantityInput.value = newQuantity;
@@ -437,16 +452,18 @@
             const cartItems = getCartItems(); // Retrieve cart items from localStorage
             let subtotal = 0;
             const freeShippingThreshold = 150;
-            const standardShippingCost = 6.00; // Standard shipping cost
-
+            //const standardShippingCost = 6.00;
+            ;let totalQuantity = 0
             // Calculate the subtotal
             cartItems.forEach((item) => {
                 const price = parseFloat(item.price.replace('$', '')); // Remove $ and parse as float
                 subtotal += price * item.quantity; // Add the item's total cost to the subtotal
+                totalQuantity += item.quantity;
             });
+            UpdateCartDisplay(totalQuantity)
 
             // Check if subtotal qualifies for free shipping
-            let shippingCost = document.getElementById("Standard").checked ? (subtotal >= freeShippingThreshold ? 0 : standardShippingCost) : getShippingCost();
+            let shippingCost = document.getElementById("Standard").checked ? (subtotal >= freeShippingThreshold ? 0 : getShippingCost()) : getShippingCost();
 
             // Define the tax rate (e.g., 10%)
             const taxRate = 10; // 10%
@@ -527,7 +544,8 @@
         function loadCartItems() {
             const cartItems = getCartItems();
             const cartContent = document.getElementById("cartContent");
-    
+            
+            let totalQuantity = 0
             if (cartItems.length > 0) {
                 cartItems.forEach((item, index) => {
                     const cartItemDiv = document.createElement('div');
@@ -552,12 +570,57 @@
                         </div>
                     `;
                     cartContent.appendChild(cartItemDiv);
+                    totalQuantity += item.quantity;
 
                     const quantityInput = document.getElementById(`quantity-${index}`);
                     quantityInput.addEventListener("change", handleQuantityChange);
                 });
+                // const quantityInputs = document.querySelectorAll(".quantityInput");
+                // quantityInputs.forEach(input => {
+                //     input.addEventListener("input", function () {
+                //         UpdateCartNum(); // Recalculate the cart total
+                //     });
+                // });
             } else {
                 cartContent.innerHTML = "<p>Your cart is empty.</p>";
+            }
+            UpdateCartDisplay(totalQuantity)
+        }
+
+        function UpdateCartNum() {
+            let productNum = 0;
+            const productRows = document.querySelectorAll(".productRow");
+            productRows.forEach(row => {
+                const productId = row.getAttribute("data-product-id");
+                const quantity = parseInt(row.querySelector(`#quantity-${productId}`).value);
+    
+                if (quantity > 0) { // Only add if quantity is greater than 0
+                    productNum += quantity;
+                }
+            });
+            UpdateCartDisplay(productNum)
+        }
+
+        function UpdateCartDisplay(num) {
+            // Get or create the red circle for the cart count
+            let cartIcon = document.querySelector(".shoplink");
+            if (!cartIcon) return;
+
+            let countCircle = document.querySelector(".cartCountCircle");
+            if (!countCircle) {
+                countCircle = document.createElement("div");
+                countCircle.classList.add("cartCountCircle");
+                cartIcon.appendChild(countCircle);
+            }
+
+            // Update the count or hide it if zero
+            if (num > 0) {
+                countCircle.innerText = num;
+                countCircle.style.display = "flex";
+                cartIcon.classList.add("stuff")
+            } else {
+                countCircle.style.display = "none";
+                cartIcon.classList.remove("stuff")
             }
         }
     </script>
