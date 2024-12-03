@@ -275,7 +275,10 @@
     <script>
         // Get saved cart items from localStorage
         function getCartItems() {
+            console.log("Getting Items")
             return JSON.parse(localStorage.getItem('cartItems')) || [];
+            //console.log('Retrieved cart items:', items);
+            return items;   
         }
 
         // Helper function to get a form field value
@@ -360,36 +363,51 @@
         }
 
         // Cart item manipulation functions
-        function updateCartItemPrice(index, newQuantity) {
+        function updateCartItemPrice(index, newQuantity, id) {
             const cartItems = getCartItems();
-            const priceElement = document.querySelector(`.cartContent .cartItem[data-product-id="${index}"] .productPrice`);
+            const priceElement = document.querySelector(`.cartContent .cartItem[data-product-id="${id}"] .productPrice`);
             const price = parseFloat(cartItems[index].price.replace('$', ''));
             priceElement.innerHTML = `$${price.toFixed(2)} x ${newQuantity} = $${(price * newQuantity).toFixed(2)}`;
             updateCartSummary();
         }
 
-        function increment(index) {
+        function increment(id) {
             const cartItems = getCartItems();
-            const quantityInput = document.getElementById(`quantity-${index}`);
-            //const cartItemDiv = document.querySelector(`.cartItem[data-product-id="${index}"]`);
-            const newQuantity = parseInt(quantityInput.value) + 1;
-            
-            quantityInput.value = newQuantity;
-            cartItems[index].quantity = newQuantity;
-            localStorage.setItem('cartItems', JSON.stringify(cartItems));
-            updateCartItemPrice(index, newQuantity);
+            const index = cartItems.findIndex(item => String(item.id) === String(id));
+            console.log(`Item with id of ${id} was returned an index of ${index}`)
+
+            if (index !== -1) {
+                const quantityInput = document.getElementById(`quantity-${id}`);
+                //const cartItemDiv = document.querySelector(`.cartItem[data-product-id="${id}"]`);
+                const newQuantity = parseInt(quantityInput.value) + 1;
+
+                quantityInput.value = newQuantity;
+                cartItems[index].quantity = newQuantity;
+                localStorage.setItem('cartItems', JSON.stringify(cartItems));
+                updateCartItemPrice(index, newQuantity, id);
+            }
+            else {
+                console.error(`Item with id ${id} not found in cartItems.`);
+            }
         }
     
-        function decrement(index) {
+        function decrement(id) {
             const cartItems = getCartItems();
-            const quantityInput = document.getElementById(`quantity-${index}`);
-            const cartItemDiv = document.querySelector(`.cartItem[data-product-id="${index}"]`);
+            const index = cartItems.findIndex(item => String(item.id) === String(id));
+
+            if (index === -1) {
+                console.error(`Item with id ${id} not found in cartItems.`);
+                return; // Exit if the item is not found
+            }
+
+            const quantityInput = document.getElementById(`quantity-${id}`);
+            //const cartItemDiv = document.querySelector(`.cartItem[data-product-id="${id}"]`);
             let newQuantity = parseInt(quantityInput.value) - 1;
             if (newQuantity >= 0) {
                 quantityInput.value = newQuantity;
                 cartItems[index].quantity = newQuantity;
                 localStorage.setItem('cartItems', JSON.stringify(cartItems));
-                updateCartItemPrice(index, newQuantity);
+                updateCartItemPrice(index, newQuantity, id);
     
                 if (newQuantity === 0) {
                     cartItems.splice(index, 1);
@@ -405,8 +423,9 @@
 
         function handleQuantityChange(event) {
             const inputElement = event.target; // The input element that triggered the event
-            const index = parseInt(inputElement.getAttribute('id').split('-')[1], 10); // Extract index from input ID
+            const id = parseInt(inputElement.getAttribute('id').split('-')[1], 10); // Extract index from input ID
             const newQuantity = parseInt(inputElement.value, 10); // Parse the new quantity
+            const index = cartItems.findIndex(item => String(item.id) === String(id));
 
             if (isNaN(newQuantity) || newQuantity < 0) {
                 alert("Quantity must be a valid number greater than or equal to 0.");
@@ -418,7 +437,7 @@
             if (cartItems[index]) {
                 cartItems[index].quantity = newQuantity; // Update the quantity in the cartItems array
                 localStorage.setItem('cartItems', JSON.stringify(cartItems)); // Save updated cart to localStorage
-                updateCartItemPrice(index, newQuantity); // Update the price display in the UI
+                updateCartItemPrice(index, newQuantity, id); // Update the price display in the UI
 
                 if (newQuantity === 0) {
                     // If quantity is zero, remove the item from the cart
@@ -550,7 +569,7 @@
                 cartItems.forEach((item, index) => {
                     const cartItemDiv = document.createElement('div');
                     cartItemDiv.classList.add('cartItem');
-                    cartItemDiv.setAttribute('data-product-id', index);
+                    cartItemDiv.setAttribute('data-product-id', item.id);
     
                     cartItemDiv.innerHTML = `
                         <div class="productImage">${item.image}</div>
@@ -563,17 +582,18 @@
                                 $${parseFloat(item.price.replace('$', '')).toFixed(2)} x ${item.quantity} = $${(parseFloat(item.price.replace('$', '')) * item.quantity).toFixed(2)}
                             </span>
                             <div>
-                                <button onclick="decrement(${index})">-</button>
-                                <input type="number" class="quantityInput" id="quantity-${index}" value="${item.quantity}" min="0">
-                                <button onclick="increment(${index})">+</button>
+                                <button onclick="decrement(${item.id})">-</button>
+                                <input type="number" class="quantityInput" id="quantity-${item.id}" value="${item.quantity}" min="0">
+                                <button onclick="increment(${item.id})">+</button>
                             </div>
                         </div>
                     `;
                     cartContent.appendChild(cartItemDiv);
                     totalQuantity += item.quantity;
 
-                    const quantityInput = document.getElementById(`quantity-${index}`);
+                    const quantityInput = document.getElementById(`quantity-${item.id}`);
                     quantityInput.addEventListener("change", handleQuantityChange);
+                    console.log("Item named " + item.name + " with index of " + index + " was assigned an id of " + item.id + " and has a quantity of " + item.quantity)
                 });
                 // const quantityInputs = document.querySelectorAll(".quantityInput");
                 // quantityInputs.forEach(input => {
