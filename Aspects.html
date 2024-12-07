@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Style.css">
     <link rel="icon" type="image/x-icon" href="Aspects\SWU Aspects.png">
+    <script src="common.js"></script>
     <style>
         .contentSection {
             position: relative;
@@ -113,6 +114,7 @@
             position: relative;
             z-index: 2;
             margin: 5px;
+            text-align: right;
         }
 
         .content-section-right h2 {
@@ -151,10 +153,38 @@
             position: relative;
             z-index: 2;
             margin: 5px;
+            text-align: center;
         }
 
         .content-section-center h2 {
             font-size: 54px;
+        }
+
+        .content-section-left ul, .content-section-center ul, .content-section-right ul, .contentSection ul  {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .rightCardDiv {
+            position:absolute;
+            width:25%;
+            right: 0;
+        }
+
+        .rightCardDiv:nth-child(1), .rightCardDiv:nth-child(1) {
+            right: 66%
+
+        }
+
+        .leftCardDiv {
+            position:absolute;
+            width:25%;
+            left:0;
+        }
+
+        .leftCardDiv > img, .rightCardDiv > img {
+            width: 10vw;
+            height: auto;
         }
     </style>
 </head>
@@ -174,14 +204,18 @@
 
     <div class="mainContent">
         <div style="padding-left: 0px; padding-right: 0px;">
-            
+            <h1>Aspects</h1>
             <div class="contentSection">
+                <p>Aspects determine how your decks will generally function. Here's an overview of the six aspects currently present in the game.</p>
+                <h2>Aspect Penalties</h2>
+                <p>No deck is required to follow its aspects. Your decks have the aspects of your leader and your base. However, should you decide to stray from your chosen path, you will be penalized. For every aspect you are out of aspect, you will be required to pay <span class="resource">2</span>. It's also worth noting that some cards are double aspected. Double aspected cards require both your base and leader to have the same aspect, lest you wish to suffer any penalties.</p>
+
                 <h2>Neutral</h2>
                 <ul>
-                    <li>Tend to be weak for their cost</li>
-                    <li>Very few rares</li>
-                    <li>Early-Midgame cards</li>
-                    <li>Usable in any deck</li>
+                    <li>- Usable in any deck</li>
+                    <li>- Early-Midgame cards</li>
+                    <li>- Tend to be weak for their cost</li>
+                    <li>- Very few rares</li>
                 </ul>
             </div>
 
@@ -198,10 +232,11 @@
                 <img src="Aspects/Heroism.png" alt="" class="leftImage">
                 <h2>Heroism</h2>
                 <ul>
-                    <li>Stronger, but more expensive early-late game</li>
-                    <li>Healing</li>
-                    <li>Easier access to <strong><i>Force</i></strong> units</li>
-                    <li><span class="key">Coordinate</span></li>
+                    <li>+ Stronger early game</li>
+                    <li>+ <span class="key">Restore</span></li>
+                    <li>+ Easier access to <span class="trait">Force</span> units</li>
+                    <li>+ <span class="key">Coordinate</span></li>
+                    <li>+/- <a href="https://starwarsunlimited.com/cards?cid=3941784506#information" class="card"><img src="Cards/CloneTrooper.webp">Clone Troopers</a> are tougher than <a href="https://starwarsunlimited.com/cards?cid=3463348370#information" class="card"><img src="Cards/BattleDroid.webp">Battle Droids</a>, but harder to produce.</li>
                 </ul>
             </div>
         
@@ -209,9 +244,11 @@
                 <img src="Aspects/Villainy.png" alt="" class="rightImage">
                 <h2>Villainy</h2>
                 <ul>
-                    <li>Weaker, but cheaper early-midgame</li>
-                    <li>Powerful late game</li>
-                    <li><span class="key">Exploit</span></li>
+                    <li>+ Powerful late game</li>
+                    <li>+ Easier to Ramp</li>
+                    <li>+ <span class="key">Bounty</span> interaction</li>
+                    <li>+/- <span class="key">Exploit</span> cards</li>
+                    <li>+/- <a href="https://starwarsunlimited.com/cards?cid=3463348370#information" class="card"><img src="Cards/BattleDroid.webp">Battle Droids</a> are easily mass produced, but fragile.</li>
                 </ul>
             </div>
         
@@ -228,8 +265,9 @@
                 <img src="Aspects/Vigilance.png" alt="" class="rightImage">
                 <h2>Heroism/Vigilance</h2>
                 <ul>
-                    <li>Heavy <span class="key">Restore</span></li>
-                    <li><span class="key"></span></li>
+                    <li>+ <span class="key">Restore</span></li>
+                    <li>+ <span class="trait">Force</span> synergy</li>
+                    <li>+ Defensive Units</li>
                 </ul>
             </div>
         
@@ -237,10 +275,11 @@
                 <h2>Vigilance</h2>
                 <img src="Aspects/Vigilance.png" alt="" class="centerImage">
                 <ul>
-                    <li>More defensive</li>
+                    <li>More defensive cards</li>
                     <li>Units are tougher</li>
                     <li>Upgrade heavy</li>
                     <li>Instant death spells</li>
+                    <li>Late Game</li>
                 </ul>
             </div>
 
@@ -248,9 +287,15 @@
                 <h2>Vigilance/Villainy</h2>
                 <img src="Aspects/Vigilance.png" alt="" class="leftImage">
                 <img src="Aspects/Villainy.png" alt="" class="rightImage">
+                <div class="leftCardDiv">
+                    <img src="Cards/IdenVersio.webp" alt="">
+                    <img src="Cards/BattleDroid.webp" alt="">
+                </div>
                 <ul>
-                    <li>Powerful Endgame moves</li>
-                    <li></li>
+                    <li>+ Powerful Endgame</li>
+                    <li>+ Instant death</li>
+                    <li>+/- <span class="key">Exploit</span></li>
+                    <li>- Early Game</li>
                 </ul>
             </div>
         
@@ -263,11 +308,13 @@
             </div>
         
             <div class="content-section-left" id="heroism-command-content">
-                <h2>Command</h2>
+                <h2>Heroism/Command</h2>
                 <img src="Aspects/Heroism.png" alt="" class="leftImage">
                 <img src="Aspects/Command.png" alt="" class="rightImage">
                 <ul>
                     <li><span class="key">Restore</span></li>
+                    <li>Defensive units</li>
+                    <li></li>
                 </ul>
             </div>
 
@@ -278,16 +325,18 @@
                     <li>Ramp</li>
                     <li>Unit Buffing</li>
                     <li>Unit deals damage equal to its power</li>
+                    <li>Late Game</li>
                 </ul>
             </div>
         
-            <div class="content-section-left" id="command-villainy-content">
-                <h2>Command</h2>
+            <div class="content-section-right" id="command-villainy-content">
+                <h2>Command/Villainy</h2>
                 <img src="Aspects/Command.png" alt="" class="leftImage">
                 <img src="Aspects/Villainy.png" alt="" class="rightImage">
                 <ul>
                     <li>Resurrection of the dead</li>
-                    <li>Sacrifice of units</li>
+                    <li>Unit sacrifice</li>
+                    <li>Ramp</li>
                 </ul>
             </div>
 
@@ -304,7 +353,9 @@
                 <img src="Aspects/Heroism.png" alt="" class="leftImage">
                 <img src="Aspects/Aggression.png" alt="" class="rightImage">
                 <ul>
-                    <li></li>
+                    <li>Early Game</li>
+                    <li>Closing Cards</li>
+                    <li>Card Discard</li>
                 </ul>
             </div>
 
@@ -319,12 +370,14 @@
                 </ul>
             </div>
 
-            <div class="content-section-left" id="aggression-villainy-content">
+            <div class="content-section-right" id="aggression-villainy-content">
                 <h2>Aggression/Villainy</h2>
                 <img src="Aspects/Aggression.png" alt="" class="leftImage">
                 <img src="Aspects/Villainy.png" alt="" class="rightImage">
                 <ul>
-                    <li></li>
+                    <li>Space</li>
+                    <li><span class="key">Bounty</span> synergy</li>
+                    <li><span class="trait">Force</span> synergy</li>
                 </ul>
             </div>
         
@@ -337,16 +390,18 @@
             </div>
         
             <div class="content-section-left" id="heroism-cunning-content">
-                <h2>Heroism/Aggression</h2>
+                <h2>Heroism/Cunning</h2>
                 <img src="Aspects/Heroism.png" alt="" class="leftImage">
                 <img src="Aspects/Cunning.png" alt="" class="rightImage">
                 <ul>
-                    <li></li>
+                    <li>Space</li>
+                    <li>Early Game</li>
+                    <li>Discard</li>
                 </ul>
             </div>
 
             <div class="content-section-center" id="cunning-content">
-                <h2>Aggression</h2>
+                <h2>Cunning</h2>
                 <img src="Aspects/Cunning.png" alt="" class="centerImage">
                 <ul>
                     <li>Tempo</li>
@@ -355,12 +410,14 @@
                 </ul>
             </div>
 
-            <div class="content-section-left" id="cunning-villainy-content">
-                <h2>Aggression/Villainy</h2>
+            <div class="content-section-right" id="cunning-villainy-content">
+                <h2>Cunning/Villainy</h2>
                 <img src="Aspects/Cunning.png" alt="" class="leftImage">
                 <img src="Aspects/Villainy.png" alt="" class="rightImage">
                 <ul>
-                    <li></li>
+                    <li>Space</li>
+                    <li>Tempo</li>
+                    <li>Early Game</li>
                 </ul>
             </div>
         </div>

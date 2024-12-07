@@ -41,6 +41,7 @@ h1 > a > img, h1 > img {
     font-size: 24px;
     background-color: green;
     border-radius: 50%;
+    z-index: 2;
 }
 
 .shoplink.stuff {
@@ -233,6 +234,7 @@ h1 > a > img, h1 > img {
     position: absolute;
     left: 50%;
     transform: translate(-50%, 5%);
+    z-index: 1;
 }
 
 .card > img:nth-of-type(2) {
@@ -240,6 +242,7 @@ h1 > a > img, h1 > img {
     position: absolute;
     left: 50%;
     transform: translate(-50%, 107%);
+    z-index: 1;
 }
 
 .card:hover {
@@ -280,6 +283,7 @@ h1 > a > img, h1 > img {
     text-align: center;
     line-height: 30px;
     text-shadow: -1px 2px black; /*1px -1px black, -1px -1px black, 1px 2px black;*/
+    margin-right: 1px;
   }
 
 .footer {
